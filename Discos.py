@@ -10,12 +10,12 @@ para los discos. Voy dejando comentarios.
 """
 class Disco:
     #Inicializamos la construcción del disco.
-    def __init__(self, x_position, y_position, radio, Vx_velocity, Vy_velocy):
+    def __init__(self, x_position, y_position, radio, Vx_velocity, Vy_velocity):
         self.x_position = x_position
         self.y_position = y_position
         self.radio = radio
         self.Vx_velocity = Vx_velocity
-        self.Vy_velocity = Vy_velocy
+        self.Vy_velocity = Vy_velocity
     #Voy a incluir algunos métodos que considero apropiados.
     def mover():
         pass
