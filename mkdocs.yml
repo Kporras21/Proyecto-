@@ -1,4 +1,4 @@
-site_name: DINAMICA MOLECULAR EN DOS DIMENSIONES: DISCOS SÓLIDOS
+site_name: Métodos númericos para la resolución de ODE´S
 theme:
   name: material
   features:
@@ -26,13 +26,24 @@ theme:
       primary: teal
       accent: lime
 
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
 plugins:
   - mkdocstrings:
       default_handler: python
       handlers:
         python:
           paths: [ode]
-          site_dir: docs_1
+          site_dir: docs
+
+
 
 nav:
   - Home: index.md
