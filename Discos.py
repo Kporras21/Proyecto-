@@ -1,11 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import math
 import matplotlib.animation as animation
+import matplotlib.patches as patches
 
 
 class Disco:
-    # Inicializamos la construcción del disco.
     def __init__(self, x_position, y_position, radio, color, Vx, Vy):
         self.x_position = x_position
         self.y_position = y_position
@@ -14,62 +13,62 @@ class Disco:
         self.Vx = Vx
         self.Vy = Vy
 
-    def mover(self, x_0, y_0, t_max, N, width, height):
-        """
-        Método de la clase discos, la cual toma la posición inicial en ambas coordenadas, la velocidad, el tiempo máximo
-        y la cantidad de particiones.
+    def mover(self, x_0, y_0):
+        time = np.linspace(0.0, 10, 1000)
+        self.x_position = np.zeros(np.size(time))
+        self.y_position = np.zeros(np.size(time))
 
-        Parameters:
-        x_0 (float): Posición inicial del disco en x.
-        y_0 (float): Posición inicial del disco en y.
-        t_max (float): Tiempo total de muestreo.
-        N (int): Cantidad de particiones del tiempo.
+        self.x_position[0] = x_0
+        self.y_position[0] = y_0
 
-        Returns:
-        tuple: (time, x_positions, y_positions) Devuelve el arreglo de tiempo y los arreglos de las posiciones individualmente.
-        """
-        time = np.linspace(0, t_max, N)
-        x_positions = np.zeros(np.size(time))
-        y_positions = np.zeros(np.size(time))
+        h = time[1] - time[0]
 
-        for i in range(np.size(time)-1):
-            self.x_position = x_0 + self.Vx * time[i]
-            self.y_position = y_0 + self.Vy * time[i]
-            self.collision_wall(width, height)
+        for i in range(len(time) - 1):
+            self.x_position[i + 1] = self.x_position[i] + self.Vx * h
+            self.y_position[i + 1] = self.y_position[i] + self.Vy * h  # Corregido: usar y_position
 
+            self.collision_wall(i + 1)
+        return time, self.x_position, self.y_position
 
-
-            x_positions[i] = x_0 + self.Vx * time[i]
-            y_positions[i] = y_0 + self.Vy * time[i]
-
-            
-
-        return time, x_positions, y_positions
-
-    def collision_wall(self, width, height):
-        """
-        Método para manejar la colisión del disco con las paredes.
-
-        Parameters:
-        width (float): Ancho del área donde se mueve el disco.
-        height (float): Altura del área donde se mueve el disco.
-
-        Modifica las velocidades `Vx` y `Vy` si el disco colisiona con las paredes.
-        """
-        if self.x_position - self.radio < 0 or self.x_position + self.radio > width:
+    def collision_wall(self, i):
+        if self.x_position[i] - self.radio <= -0.5 or self.x_position[i] + self.radio >= 0.5:
             self.Vx = -self.Vx
-        if self.y_position - self.radio < 0 or self.y_position + self.radio > height:
+        if self.y_position[i] - self.radio <= -0.5 or self.y_position[i] + self.radio >= 0.5:
             self.Vy = -self.Vy
+
+    def animate_movement(self, x_0, y_0):
+        fig, ax = plt.subplots()
+        ax.set_xlim((-0.5, 0.5))
+        ax.set_ylim((-0.5, 0.5))
+        ax.set_xlabel('Posición en X')
+        ax.set_ylabel('Posición en Y')
+
+        time, self.x_positions, self.y_positions = self.mover(x_0, y_0)
+
+        disco = patches.Circle((self.x_position[0], self.y_position[0]), radius=self.radio, color=self.color)
+        ax.add_patch(disco)
+
         
 
+        def init():
+            disco.center = (self.x_position[0], self.y_position[0])
+            return (disco,)
+
+        def animate(i):
+            disco.center = (self.x_position[i], self.y_position[i])
+            return (disco,)
+
+        anim = animation.FuncAnimation(fig, animate, init_func=init, frames=len(time), interval=50, blit=True)
+        plt.show()
+
+
+# Ejemplo de uso
+disco = Disco(0, 0, 0.2, 'blue', 2, 0.5)
+disco.animate_movement(0, 0)
 
 
 
 
-def collision_wall(self):
-        for i in range():
-            pass
-         
         
 
 
