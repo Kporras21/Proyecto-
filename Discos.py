@@ -25,7 +25,7 @@ class Disco:
 
         for i in range(len(time) - 1):
             self.x_position[i + 1] = self.x_position[i] + self.Vx * h
-            self.y_position[i + 1] = self.y_position[i] + self.Vy * h  # Corregido: usar y_position
+            self.y_position[i + 1] = self.y_position[i] + self.Vy * h 
 
             self.collision_wall(i + 1)
         return time, self.x_position, self.y_position
@@ -63,7 +63,7 @@ class Disco:
 
 
 # Ejemplo de uso
-disco = Disco(0, 0, 0.2, 'blue', 2, 0.5)
+disco = Disco(0, 0, 0.2, 'green', -1, -0.5)
 disco.animate_movement(0, 0)
 
 
@@ -76,9 +76,3 @@ disco.animate_movement(0, 0)
 
 
 
-"""
-
-Una función para animar los discos por medio de matplotlib, utilizando funcAnimation de matplotlib.
-"""
-def animation():
-        pass
