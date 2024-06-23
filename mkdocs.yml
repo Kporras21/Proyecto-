@@ -41,7 +41,7 @@ plugins:
       handlers:
         python:
           paths: [ode]
-          site_dir: docs
+          site_dir: docs_1
 
 
 
