@@ -1,103 +1,289 @@
 import numpy as np
+
 import matplotlib.pyplot as plt
+
 import matplotlib.animation as animation
+
 import matplotlib.patches as patches
+
+import random
+
 
 
 class Disco:
+
     def __init__(self, x_position, y_position, radio, color, Vx, Vy):
+
         self.x_position = x_position
+
         self.y_position = y_position
+
         self.radio = radio
+
         self.color = color
+
         self.Vx = Vx
+
         self.Vy = Vy
 
-    def mover(self, x_0, y_0, other_disc=None):
-        time = np.linspace(0.0, 10, 1000)
-        self.x_position = np.zeros(np.size(time))
-        self.y_position = np.zeros(np.size(time))
+        self.x_positions = [x_position]  # Lista para almacenar posiciones x a lo largo del tiempo
 
-        self.x_position[0] = x_0
-        self.y_position[0] = y_0
+        self.y_positions = [y_position]  # Lista para almacenar posiciones y a lo largo del tiempo
 
-        if other_disc:
-            other_disc.x_position = np.zeros(np.size(time))
-            other_disc.y_position = np.zeros(np.size(time))
-            other_disc.x_position[0] = other_disc.x_position_initial
-            other_disc.y_position[0] = other_disc.y_position_initial
 
-        h = time[1] - time[0]
 
-        for i in range(len(time) - 1):
-            self.x_position[i + 1] = self.x_position[i] + self.Vx * h
-            self.y_position[i + 1] = self.y_position[i] + self.Vy * h 
+    def move(self, dt):
 
-            self.collision_wall(i + 1)
-            if other_disc:
-                other_disc.x_position[i + 1] = other_disc.x_position[i] + other_disc.Vx * h
-                other_disc.y_position[i + 1] = other_disc.y_position[i] + other_disc.Vy * h
-                other_disc.collision_wall(i + 1)
-                self.collision_disc(other_disc, i + 1)
-                
-        return time, self.x_position, self.y_position
+        self.x_position += self.Vx * dt
 
-    def collision_wall(self, i):
-        if self.x_position[i] - self.radio <= -0.5 or self.x_position[i] + self.radio >= 0.5:
-            self.Vx = -self.Vx
-        if self.y_position[i] - self.radio <= -0.5 or self.y_position[i] + self.radio >= 0.5:
-            self.Vy = -self.Vy
+        self.y_position += self.Vy * dt
 
-    def collision_disc(self, other, i):
-        dx = self.x_position[i] - other.x_position[i]
-        dy = self.y_position[i] - other.y_position[i]
+        self.x_positions.append(self.x_position)  # Registrar nueva posición x
+
+        self.y_positions.append(self.y_position)  # Registrar nueva posición y
+
+
+
+    def check_wall_collision(self, width, height):
+
+        if self.x_position - self.radio <= -width / 2:
+
+            self.Vx *= -1.0
+
+            self.x_position = (-1.0 * width / 2) + self.radio
+
+        elif self.x_position + self.radio >= width / 2:
+
+            self.Vx *= -1.0
+
+            self.x_position = (width / 2) - self.radio
+
+        elif self.y_position - self.radio <= -height / 2:
+
+            self.Vy *= -1.0
+
+            self.y_position = (-1.0 * height / 2) + self.radio
+
+        elif self.y_position + self.radio >= height / 2:
+
+            self.Vy *= -1.0
+
+            self.y_position = (width / 2) - self.radio
+
+
+
+    def check_disk_collision(self, other_disk):
+
+        dx = self.x_position - other_disk.x_position
+
+        dy = self.y_position - other_disk.y_position
+
         distance = np.sqrt(dx**2 + dy**2)
-        if distance < self.radio + other.radio:
-            # Reflect velocities upon collision
-            self.Vx, other.Vx = other.Vx, self.Vx
-            self.Vy, other.Vy = other.Vy, self.Vy
 
-    def animate_movement(self, x_0, y_0, other_disc=None):
+
+
+        if distance < self.radio + other_disk.radio:
+
+            collision_normal = np.array([dx, dy]) / distance
+
+            relative_velocity = np.array([self.Vx - other_disk.Vx, self.Vy - other_disk.Vy])
+
+            relative_speed = np.dot(relative_velocity, collision_normal)
+
+
+
+            if relative_speed < 0:
+
+                self.Vx -= relative_speed * collision_normal[0]
+
+                self.Vy -= relative_speed * collision_normal[1]
+
+                other_disk.Vx += relative_speed * collision_normal[0]
+
+                other_disk.Vy += relative_speed * collision_normal[1]
+
+
+
+            # Registra las posiciones después de la colisión
+
+            self.x_positions[-1] = self.x_position
+
+            self.y_positions[-1] = self.y_position
+
+            other_disk.x_positions[-1] = other_disk.x_position
+
+            other_disk.y_positions[-1] = other_disk.y_position
+
+
+
+
+
+class DiscoSimulation:
+
+    def __init__(self, N, alto, ancho, radio):
+
+        self.N = N  # Cantidad de discos
+
+        self.altura = alto
+
+        self.ancho = ancho
+
+        self.radio = radio
+
+        self.discos = []
+
+
+
+    def disk_creation(self):
+
+        for _ in range(self.N):
+
+            while True:
+
+                x_position = random.uniform(-self.ancho / 2 + self.radio, self.ancho / 2 - self.radio)
+
+                y_position = random.uniform(-self.altura / 2 + self.radio, self.altura / 2 - self.radio)
+
+                color = random.choice(['red', 'blue', 'green', 'yellow'])
+
+                Vx = random.uniform(-3, 3)
+
+                Vy = random.uniform(-3, 3)
+
+
+
+                # Ajustar para evitar valores excesivamente pequeños
+
+                while abs(Vx) < 1.0 or abs(Vy) < 1.0:
+
+                    Vx = random.uniform(-3, 3)
+
+                    Vy = random.uniform(-3, 3)
+
+
+
+                # Crear disco y añadirlo a la lista
+
+                disco = Disco(x_position, y_position, self.radio, color, Vx, Vy)
+
+                self.discos.append(disco)
+
+
+
+                # Comprobar colisiones con otros discos
+
+                colision = False
+
+                for other in self.discos[:-1]:
+
+                    if np.sqrt((disco.x_position - other.x_position)**2 + (disco.y_position - other.y_position)**2) < disco.radio + other.radio:
+
+                        colision = True
+
+                        break
+
+
+
+                if not colision:
+
+                    break
+
+
+
+    def animate_movement(self):
+
         fig, ax = plt.subplots()
-        ax.set_xlim((-0.5, 0.5))
-        ax.set_ylim((-0.5, 0.5))
-        ax.set_xlabel('Posición en X')
-        ax.set_ylabel('Posición en Y')
 
-        self.x_position_initial = x_0
-        self.y_position_initial = y_0
+        ax.set_xlim(-self.ancho / 2, self.ancho / 2)
 
-        if other_disc:
-            other_disc.x_position_initial = other_disc.x_position
-            other_disc.y_position_initial = other_disc.y_position
+        ax.set_ylim(-self.altura / 2, self.altura / 2)
 
-        time, self.x_positions, self.y_positions = self.mover(x_0, y_0, other_disc)
-        
-        moving_disco = patches.Circle((self.x_position[0], self.y_position[0]), radius=self.radio, color=self.color)
-        ax.add_patch(moving_disco)
-        
-        if other_disc:
-            static_disco = patches.Circle((other_disc.x_position[0], other_disc.y_position[0]), radius=other_disc.radio, color=other_disc.color)
-            ax.add_patch(static_disco)
+        ax.set_aspect('equal')
+
+
+
+        patches_list = []
+
+        for disco in self.discos:
+
+            circle = patches.Circle((disco.x_position, disco.y_position), radius=disco.radio, color=disco.color)
+
+            ax.add_patch(circle)
+
+            patches_list.append(circle)
+
+
 
         def init():
-            moving_disco.center = (self.x_position[0], self.y_position[0])
-            if other_disc:
-                static_disco.center = (other_disc.x_position[0], other_disc.y_position[0])
-            return (moving_disco, static_disco) if other_disc else (moving_disco,)
+
+            return patches_list
+
+
 
         def animate(i):
-            moving_disco.center = (self.x_position[i], self.y_position[i])
-            if other_disc:
-                static_disco.center = (other_disc.x_position[i], other_disc.y_position[i])
-            return (moving_disco, static_disco) if other_disc else (moving_disco,)
 
-        anim = animation.FuncAnimation(fig, animate, init_func=init, frames=len(time), interval=50, blit=True)
+            dt = 0.05  # Tiempo discretizado ajustado para coincidir con el intervalo de 50ms
+
+
+
+            # Mover discos y verificar colisiones con paredes
+
+            for disco in self.discos:
+
+                disco.move(dt)
+
+                disco.check_wall_collision(self.ancho, self.altura)
+
+
+
+            # Verificar colisiones entre discos
+
+            for i in range(len(self.discos)):
+
+                for j in range(i + 1, len(self.discos)):
+
+                    self.discos[i].check_disk_collision(self.discos[j])
+
+
+
+            # Actualizar posiciones de los parches
+
+            for index, disco in enumerate(self.discos):
+
+                patches_list[index].center = (disco.x_position, disco.y_position)
+
+
+
+            return patches_list
+
+
+
+        ani = animation.FuncAnimation(fig, animate, init_func=init, frames=200, interval=50, blit=True)
+
         plt.show()
 
 
-# Ejemplo de uso
-disco1 = Disco(0, 0, 0.2, 'green', -1, -0.5)
-disco2 = Disco(0.2, 0.2, 0.1, 'red', 0.5, 0.5)
 
-disco1.animate_movement(0, 0, other_disc=disco2)
+    def get_positions(self):
+
+        positions = []
+
+        for disco in self.discos:
+
+            positions.append((disco.x_positions, disco.y_positions))
+
+        return positions
+
+
+
+sim = DiscoSimulation(100, 5, 5, 0.01)
+
+sim.disk_creation()
+
+sim.animate_movement()
+
+
+
+# Obtener posiciones registradas
+
+positions = sim.get_positions()
