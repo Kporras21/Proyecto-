@@ -169,7 +169,6 @@ class DiscoSimulation:
                 self.discos.append(disco)
 
 
-
                 # Comprobar colisiones con otros discos
 
                 colision = False
@@ -188,7 +187,7 @@ class DiscoSimulation:
 
                     break
 
-
+        return self.discos
 
     def animate_movement(self):
 
@@ -274,15 +273,84 @@ class DiscoSimulation:
 
         return positions
 
+def time_to_wall_collision(disk, width, height):
+    tx_min = float('inf')
+    ty_min = float('inf')
+
+    if disk.Vx > 0:
+        tx_min = (width / 2 - disk.radio - disk.x_position) / disk.Vx
+    elif disk.Vx < 0:
+        tx_min = (-width / 2 + disk.radio - disk.x_position) / disk.Vx
+
+    if disk.Vy > 0:
+        ty_min = (height / 2 - disk.radio - disk.y_position) / disk.Vy
+    elif disk.Vy < 0:
+        ty_min = (-height / 2 + disk.radio - disk.y_position) / disk.Vy
+
+    return min(tx_min, ty_min)
+
+def time_to_disk_collision(disk1, disk2):
+    R_rel = np.array([disk1.x_position - disk2.x_position, disk1.y_position - disk2.y_position])
+    V_rel = np.array([disk1.Vx - disk2.Vx, disk1.Vy - disk2.Vy])
+    R_rel_dot_V_rel = np.dot(R_rel, V_rel)
+    V_rel_square = np.dot(V_rel, V_rel)
+    R_rel_square = np.dot(R_rel, R_rel)
+    sum_radius = disk1.radio + disk2.radio
+
+    if V_rel_square == 0:
+        return float('inf')
+
+    a = V_rel_square
+    b = 2 * R_rel_dot_V_rel
+    c = R_rel_square - sum_radius**2
+
+    discriminant = b**2 - 4*a*c
+
+    if discriminant < 0:
+        return float('inf')
+
+    t1 = (-b - np.sqrt(discriminant)) / (2 * a)
+    t2 = (-b + np.sqrt(discriminant)) / (2 * a)
+
+    if t1 > 0 and t2 > 0:
+        return min(t1, t2)
+    elif t1 > 0:
+        return t1
+    elif t2 > 0:
+        return t2
+    else:
+        return float('inf')
+
+def determine_collision_event(disk1, disk2, width, height):
+    t_wall_collision1 = time_to_wall_collision(disk1, width, height)
+    t_wall_collision2 = time_to_wall_collision(disk2, width, height)
+    t_disk_collision = time_to_disk_collision(disk1, disk2)
+
+    min_time = min(t_wall_collision1, t_wall_collision2, t_disk_collision)
+
+    if min_time == t_disk_collision:
+        return 'disk_collision', min_time
+    elif min_time == t_wall_collision1:
+        return 'wall_collision_disk1', min_time
+    else:
+        return 'wall_collision_disk2', min_time
+
+# Example usage
+width = 10
+height = 10
 
 
-sim = DiscoSimulation(100, 5, 5, 0.01)
 
-sim.disk_creation()
+sim = DiscoSimulation(2, 5, 5, 0.5)
+
+disks = sim.disk_creation()
+
+disk1, disk2 = disks[0], disks[1]
 
 sim.animate_movement()
 
-
+event, time = determine_collision_event(disk1, disk2, width, height)
+print(f"The first event is a {event} occurring at t = {time:.2f} seconds")
 
 # Obtener posiciones registradas
 
