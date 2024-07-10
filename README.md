@@ -1,8 +1,8 @@
-# Dínamica molecular en dos dimensiones: Discos Solidos
+# Dinámica molecular en dos dimensiones: Discos Sólidos
 
- Proyecto semestral del curso Física computacional (FS-0432) de la Universidad de Costa Rica 
+ Proyecto semestral del curso Física Computacional (FS-0432) de la Universidad de Costa Rica 
 ## Integrantes:
-- Adriana Gutierrez 
+- Adriana Gutiérrez 
 - Daniel Murillo 
 - Dylan Navarro 
 - Kevin Porras 
