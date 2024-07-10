@@ -1,17 +1,51 @@
-# Welcome to MkDocs
+# Dinámica molecular en dos dimensiones: discos sólidos. 
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+El objetivo consiste en modelar el movimiento en el tiempo de $N$ cantidad de discos que se encuentran adentro de una caja de dos dimensiones y cuyo lado mide $1 (cm, m, mm, etc)$. Los discos pueden colisionar entre ellos o con las paredes de la caja. 
 
-## Commands
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+Para ello se implementó código orientado a objetos en Python. A continuación se detallarán las dos clases principales del código. 
 
-## Project layout
+## Class Disco 
+* Esta clase cuenta con tres métodos principales:
+  - move(self, dt)
+  - check\_wall\_collision(self, width, height)
+  - check\_disk\_collision(self, other\_disk)
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+### move(self, dt)
+En este método se utilizó el método de Euler para resolver las ecuaciones de movimiento tanto para el eje $x$ como para el eje $y$, dichas ecuaciones son: 
+
+$$
+x = v\_xt  
+$$
+
+$$
+y = v\_yt
+$$
+
+Posteriormente, se guardan las posiciones en arrays. 
+
+### check\_wall\_collision(self, width, height)
+Este método comprueba que el disco colisionó con la pared, para ello se utilizan las siguientes ecuaciones: 
+  - $x - r \leq \frac{-l}{2}$
+  - $x + r \geq \frac{l}{2}$
+  - $y - r \leq \frac{-l}{2}$
+  - $y + r \geq \frac{l}{2}$
+
+donde $l$ es lado de la caja y $r$ el radio del disco. 
+
+### check\_disk\_collision(self, other\_disk)
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+  
