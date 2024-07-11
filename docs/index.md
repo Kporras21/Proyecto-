@@ -104,24 +104,104 @@ Este método le da las características de circulo a cada disco, es decir, toma 
 Este método guarda las posiciones en el eje x y en el eje y de cada disco en listas.
 
 ## Funciones fuera de las clases. 
-Además de utilizar clases, se crearon diversas funciones independientes para...
+Además de utilizar clases, se crearon diversas funciones independientes para obtener el tipo de evento màs probable a suceder en un tiempo $t$ y para visualizar un histograma. 
+
+## Evento más probable a suceder. 
+La idea de esta parte es obtener cuál es el evento más probable a suceder para determinado disco, es decir, a partir del tiempo inicial, qué evento sucede primero, ya sea colisión con pared o colisión con otro disco. Para ello se crearon tres funciones que se detallan a continuación.
+
+### time\_to\_wall\_collision(disk, width, height)
+Esta función calcula el tiempo mínimo en el cual un disco colisiona con alguna pared de la caja. Para ello se implementaron las siguientes condiciones: 
 
 
-                                                                                                                                                                                                                                                                                                                                                                                              18,1     Comienzo
+Si $v_{x} > 0$ (el disco se mueve hacia la derecha), entonces:
+
+$$
+t_{xmin} = \frac{\frac{l}{2}-r-x}{v_{x}}.
+$$ 
+
+Si $v_{x} < 0$ (el disco se mueve hacia la izquierda), entonces:
+
+$$
+t_{xmin} = \frac{\frac{-l}{2}+r-x}{v_{x}}.
+$$
+
+Si $v_{y} > 0$ (el disco se mueve hacia arriba), entonces:  
+
+$$
+t_{ymin} = \frac{\frac{a}{2}-r-y}{v_{y}}.
+$$
+
+Si $v_{y} < 0$ (el disco se mueve hacia abajo), entonces:
+
+$$
+t_{ymin} = \frac{\frac{-a}{2}+r-y}{v_{y}}.
+$$
+
+Donde $l$ es el largo de la caja, $a$ es el ancho de la caja y $r$ el radio del disco. 
+
+### time\_to\_disk\_collision(disk1, disk2)
+Esta función calcula el tiempo mínimo en el cual un disco colisiona con otro. Para ello se trabaja con cálculo de vectores. Obteniendo: 
+
+$$
+\vec{R_{rel}}  
+$$ 
+
+vector relativo entre los centros de los discos. 
+
+$$
+\vec{V_{rel}}
+$$
+
+vector relativo entre las velocidades de los discos. 
+
+De esta manera se pueden aplicar condiciones para saber qué evento sucederá: 
 
 
+Si $\sqrt{\vec{V_{rel}}} = 0$ los discos están en movimiento paralelo sin posibilidad de colisión. 
 
+
+Si este no es el caso, entonces se requiere saber el tiempo en el cual existe una colisión. Dicho tiempo se puede calcular de la siguiente manera: 
+
+$$
+\vec{R_{rel}}^2 = \vec{R_{sum}}^2
+$$
+
+donde 
+
+$$
+\vec{R_{sum}}^2 = r_{1} + r_{2} = \vec{R_{rel}} \cdot \vec{R_{rel}}
+$$
+
+y, según ecuaciones de cinemática, 
+
+$$
+\vec{R_{rel}} = \vec{R_{rel0}} + t\vec{V_{rel}}.
+$$
  
+Por lo tanto, 
+
+$$
+\vec{R_{sum}}^2 = (\vec{R_{rel0}} + t\vec{V_{rel}}) \cdot  (\vec{R_{rel0}} + t\vec{V_{rel}})
+$$
+
+$$
+\vec{R_{sum}}^2 = (\vec{R_{rel0}} \cdot \vec{R_{rel0}} + 2t(\vec{R_{rel0}} \vec{V_{rel}}) + t^2(\vec{V_{rel}} \cdot \vec{V_{rel}})
+$$
+
+Donde $(\vec{R_{rel0}} \cdot \vec{R_{rel0}}) = \vec{R_{rel}}^2$, $\vec{R_{rel0}} \cdot \vec{V_{rel}} = \vec{R_{rel}} \cdot \vec{V_{rel}}$ y $\vec{V_{rel}} \cdot \vec{V_{rel} = \vec{V_{rel}}^2}. 
+
+De esta manera se obtiene una ecuación cuadrática de la forma 
+
+$$
+at^2 + bt + c
+$$
+
+donde se define $a = \sqrt{\vec{V_{rel}}}$, $b = 2(\vec{R_{rel}} \cdot \vec{V_{rel}})$ y $c = \sqrt{\vec{R_{rel}}} - (r_{1} + r_{2}^2)$.
+
+De esta ecuación, se obtienen resultados con el discriminante. 
 
 
-
-
-
-
-
-
-
-
+Si $\Delta < 0$ no existe colisión. 
 
 
   
