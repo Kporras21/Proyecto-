@@ -414,7 +414,7 @@ def time_to_wall_collision(disk, width, height):
 
     ty_min = float('inf')
 
-    if disk.Vx > 0:1
+    if disk.Vx > 0:
 
         tx_min = (width / 2 - disk.radio - disk.x_position) / disk.Vx
 
@@ -536,6 +536,7 @@ def determine_collision_event(disk1, disk2, width, height):
         return 'wall_collision_disk2', min_time
 
 # Example usage
+"""""
 width = 10
 height = 10
 
@@ -556,3 +557,4 @@ print(f"The first event is a {event} occurring at t = {time:.2f} seconds")
 # Obtener posiciones registradas
 
 positions = sim.get_positions()
+"""
