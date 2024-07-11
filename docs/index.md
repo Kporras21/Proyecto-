@@ -52,7 +52,7 @@ Si cualquiera de las ecuaciones anteriores se cumple, se invierte el signo de la
 Este método comprueba la colisión entre discos utilizando la distancia entre los centros de los discos, es decir
 
 $$
-d = \sqrp{dx^2 + dy^2}
+d = \sqrt{dx^2 + dy^2}
 $$
 
 donde
@@ -98,7 +98,7 @@ y se invierten las posiciones de los discos, es decir, $-x_{1}$, $-x_{2}$, $-y_{
 Este método inicializa las posiciones y velocidades iniciales de cada disco utilizando la función $random$ y la clase Disco (también inicializa el color del disco). Por otro lado, calcula la distancia entre discos y verifica si hay o no colisión entre discos.
 
 ### animate\_movement(self)
-Este método le da las características de circulo a cada disco, es decir, toma en cuenta que cada disco cubre un porcentaje de área en toda la caja. Por otro lado, crea la animación y le da movimiento a los discos con forme avanza el tiempo.Utiliza los métodos de la clase Disco para animar la colisón con pared y con otro disco.
+Este método le da las características de circulo a cada disco, es decir, toma en cuenta que cada disco cubre un porcentaje de área en toda la caja. Por otro lado, crea la animación y le da movimiento a los discos con forme avanza el tiempo. Utiliza los métodos de la clase Disco para animar la colisón con pared y con otro disco.
 
 ### get\_positions(self)
 Este método guarda las posiciones en el eje x y en el eje y de cada disco en listas.
