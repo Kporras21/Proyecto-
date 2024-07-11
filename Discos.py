@@ -498,63 +498,67 @@ def time_to_disk_collision(disk1, disk2):
 
         return float('inf')
 
-def determine_collision_event(disk1, disk2, width, height):
+def determine_collision_event(disks, width, height):
     """
     Calcula y retorna el tipo de evento màs pròximo a suceder entre dos discos. 
 
     Parameters
     ----------
-    disk1 : Disco
-        Objeto de la clase Disco que representa un disco.
-    disk2 : Disco
-        Objeto de la clase Disco que representa un disco.
+    disks : array
+        Array de objectos de la clase Disco.
+    width: float
+        Ancho de la caja.
+    height: float
+        Alto de la caja.
 
     Returns
     -------
     tuple
-        Una tupla que contiene el tipo de evento de colisión y el tiempo mínimo hasta el evento de colisión.
+        Una tupla que contiene el tipo de evento de colisión, los indices de los discos y el tiempo mínimo hasta el evento de colisión.
     """
 
-    t_wall_collision1 = time_to_wall_collision(disk1, width, height)
+    min_time = float('inf')
+    event_type = None
+    disk_indices = (None, None)
 
-    t_wall_collision2 = time_to_wall_collision(disk2, width, height)
+    for i, disk1 in enumerate(disks):
+        t_wall_collision = time_to_wall_collision(disk1, width, height)
+        if t_wall_collision < min_time:
+            min_time = t_wall_collision
+            event_type = 'wall_collision'
+            disk_indices = (i, None)
 
-    t_disk_collision = time_to_disk_collision(disk1, disk2)
+        for j in range(i + 1, len(disks)):
+            disk2 = disks[j]
+            t_disk_collision = time_to_disk_collision(disk1, disk2)
+            if t_disk_collision < min_time:
+                min_time = t_disk_collision
+                event_type = 'disk_collision'
+                disk_indices = (i, j)
 
-    min_time = min(t_wall_collision1, t_wall_collision2, t_disk_collision)
+    return event_type, disk_indices, min_time
 
-    if min_time == t_disk_collision:
-
-        return 'disk_collision', min_time
-
-    elif min_time == t_wall_collision1:
-
-        return 'wall_collision_disk1', min_time
-
-    else:
-
-        return 'wall_collision_disk2', min_time
 
 # Example usage
-"""""
+
+"""
 width = 10
 height = 10
 
 
 
-sim = DiscoSimulation(2, 5, 5, 0.5)
+sim = DiscoSimulation(3, 5, 5, 0.5)
 
 disks = sim.disk_creation()
 
-disk1, disk2 = disks[0], disks[1]
 
 sim.animate_movement()
 
-event, time = determine_collision_event(disk1, disk2, width, height)
+event, disk_indices, time = determine_collision_event(disks, width, height)
 
-print(f"The first event is a {event} occurring at t = {time:.2f} seconds")
-
+print(f"The first event is a {event} involving disks {disk_indices} occurring at t = {time:.2f} seconds")
 # Obtener posiciones registradas
 
 positions = sim.get_positions()
 """
+
