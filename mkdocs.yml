@@ -29,6 +29,8 @@ theme:
 markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
+  - toc:
+      permalink: false
 
 extra_javascript:
   - javascripts/mathjax.js
@@ -40,8 +42,8 @@ plugins:
       default_handler: python
       handlers:
         python:
-          paths: [ode]
-          site_dir: docs_1
+          paths: [Discos]
+          site_dir: docs
 
 
 
