@@ -218,6 +218,11 @@ $$
 ### determine\_collision\_event(disks, width, height)
 En esta función se define cuál es el evento más próximo a suceder entre una colisión con pared y una colisión entre discos. Implementa las funciones anteriores, de esta manera obtiene un tiempo para cada evento y utiliza el menor tiempo de estos.
 
+# Resultado Discos.py
+
+$$
+KEVIN PONE AQUÍ EL RESULTADO DE LOS DISCOS, TAMBIÉN EN REFERENCE
+$$
 
 # Histograma 
 Para realizar el histograma de la posición en x de los discos se crearon dos archivos .py, $mk\_csv-py$ y $mk\_histogram.py$
@@ -227,3 +232,9 @@ Para realizar el histograma de la posición en x de los discos se crearon dos ar
 ### guardar\_lista\_en\_csv(lista, nombre\_archivo)
 
 ## mk\_histogram.py  
+
+# Resultado Histograma
+
+$$
+KEVIN PONÉ AQUÍ LA IMAGEN DEL HISTOGRAMA, TAMBIÉN EN REFERENCE 
+$$
