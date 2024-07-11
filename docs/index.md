@@ -188,7 +188,7 @@ $$
 \vec{R_{sum}}^2 = (\vec{R_{rel0}} \cdot \vec{R_{rel0}} + 2t(\vec{R_{rel0}} \vec{V_{rel}}) + t^2(\vec{V_{rel}} \cdot \vec{V_{rel}})
 $$
 
-Donde $(\vec{R_{rel0}} \cdot \vec{R_{rel0}}) = \vec{R_{rel}}^2$, $\vec{R_{rel0}} \cdot \vec{V_{rel}} = \vec{R_{rel}} \cdot \vec{V_{rel}}$ y $\vec{V_{rel}} \cdot \vec{V_{rel} = \vec{V_{rel}}^2}. 
+Donde $(\vec{R_{rel0}} \cdot \vec{R_{rel0}}) = \vec{R_{rel}}^2$, $\vec{R_{rel0}} \cdot \vec{V_{rel}} = \vec{R_{rel}} \cdot \vec{V_{rel}}$ y $\vec{V_{rel}} \cdot \vec{V_{rel} = \vec{V_{rel}}^2}$. 
 
 De esta manera se obtiene una ecuación cuadrática de la forma 
 
@@ -203,5 +203,23 @@ De esta ecuación, se obtienen resultados con el discriminante.
 
 Si $\Delta < 0$ no existe colisión. 
 
+Si $\Delta = 0$ los discos colisionan en un único punto.
+
+
+Si $\Delta > 0$ hay dos momentos en los que los discos podrían colisionar en el futuro (de aquí la necesidad de buscar el tiempo mínimo para obtener el tiempo más pequeño).
+
+
+De esta forma se obtiene el tiempo dado por:
+
+$$
+t = \frac{-b-\sqrt{\Delta}}{2a}
+$$
+
+### determine\_collision\_event(disk1, disk2, width, height)
+En esta función se define cuál es el evento más próximo a suceder entre una colisión con pared y una colisión entre discos. Implementa las funciones anteriores, de esta manera obtiene un tiempo para cada evento y utiliza el menor tiempo de estos.
+
+
+# Histograma 
+Para realizar el histograma de la posición en x de los discos se crearon dos archivos .py, $mk\_csv-py$ y $mk\_histogram.py$
 
   
