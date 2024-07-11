@@ -14,20 +14,12 @@ class Disco:
     """
     Clase utilizada para representar un disco.
 
-    Methods
-    -------
-    move(dt)
-        Calcula la posición en el eje x y en el eje y en el tiempo.
-
-    check_wall_collision(self, width, height)
-        Comprueba y maneja la colisión de un disco con las paredes de una caja formada por un plano.
-
-    check_disk_collision(self, other_disk)
-        Comprueba y maneja la colisión de un disco con otro.
     """
 
     def __init__(self, x_position, y_position, radio, color, Vx, Vy):
         """
+        Constructor de la clase Disco.
+
         Args:
             x_position (float): Posición inicial del disco en el eje x.
             y_position (float): Posición inicial del disco en el eje y.
@@ -58,10 +50,9 @@ class Disco:
     def move(self, dt):
         """Calcula la posición en el eje x y en el eje y en el tiempo.
 
-        Parameters
-        ----------
-        dt : float 
-            Discretización del tiempo en el que se mueve el disco.
+        Args:
+            dt (float): Discretización del tiempo en el que se mueve el disco.
+            
         """
 
         self.x_position += self.Vx * dt
@@ -77,12 +68,9 @@ class Disco:
     def check_wall_collision(self, width, height):
         """Comprueba y maneja la colisión de un disco con las paredes de una caja formada por un plano.
 
-        Parameters
-        ----------
-        width : float 
-            Ancho del plano.
-        height : float 
-            Alto del plano.
+        Args:
+            width (float):  Ancho del plano.
+            height (float): Alto del plano.
         """
 
         if self.x_position - self.radio <= -width / 2:
@@ -114,10 +102,9 @@ class Disco:
     def check_disk_collision(self, other_disk):
         """Comprueba y maneja la colisión de un disco con otro.
 
-        Parameters
-        ----------
-        other_disk : Disco 
-            Otro objeto de la clase Disco con el que se verifica la colisión.
+        Args:
+            other_disk (callable): Otro objeto de la clase Disco con el que se verifica la colisión.
+                
         """
 
         dx = self.x_position - other_disk.x_position
@@ -167,30 +154,15 @@ class DiscoSimulation:
     """
     Clase utilizada para animar el movimiento de los discos dentro de una caja. 
 
-    Methods
-    -------
-    disk_creation()
-        Crea y retorna una lista con discos a los cuales le asigna una posición y velocidad inicial  en el eje x y en el eje y.
-
-    animate_movement()
-        Asigna a cada disco las dimensiones de un circulo y crea una animación de vomiento para todos los discos en la caja.
-
-    get_positions()
-        Guarda y retorna la posición en el eje x y en el eje y de cada disco.  
     """
 
     def __init__(self, N, alto, ancho, radio):
         """
-        Parameters
-        ----------
-        N : int
-            Cantidad de discos.
-        alto : float
-            Alto de la caja.
-        ancho : float
-            Ancho de la caja.
-        radio : float
-            Radio de los discos.
+        Args:
+            N (int):  Cantidad de discos.
+            alto (float): Alto de la caja.
+            ancho (float): Ancho de la caja.
+            radio (float): Radio de los discos.
         """
 
         self.N = N  # Cantidad de discos
@@ -209,11 +181,11 @@ class DiscoSimulation:
         """
         Crea y retorna una lista con discos a los cuales le asigna una posición y velocidad inicial  en el eje x y en el eje y.
 
-        Returns
-        -------
-        list
-            lista que guarda cada uno de los discos creados.
+        Returns:
+            list: lista que guarda cada uno de los discos creados.
+
         """
+                
 
         for _ in range(self.N):
 
@@ -299,11 +271,10 @@ class DiscoSimulation:
             """
             Inicializa la animación de movimiento de discos.
 
-            Returns
-            -------
-            list
-                Lista de objetos de parches (patches.Circle) que representan los discos en la simulación.
+            Returns:
+                list: Lista de objetos de parches (patches.Circle) que representan los discos en la simulación.
             """
+                
 
             return patches_list
 
@@ -313,16 +284,15 @@ class DiscoSimulation:
             """
             Mueve y actualiza los discos en cada frame.
 
-            Parameters
-            ----------
-            i : int
-                Número de frame. 
+            Args:
+                i (int): Número de frame. 
+                    
 
-            Returns
-            -------
-            list
-                Lista de objetos de parches (patches.Circle) que representan los discos en la simulación.
+            Returns:
+            
+                list: Lista de objetos de parches (patches.Circle) que representan los discos en la simulación.
             """
+                    
 
             dt = 0.05  # Tiempo discretizado ajustado para coincidir con el intervalo de 50ms
 
@@ -370,10 +340,9 @@ class DiscoSimulation:
         """
         Guarda y retorna la posición en el eje x y en el eje y de cada disco. 
 
-        Returns
-        -------
-        list
-            Lista en forma de tuple con dos listas adentro, una para la posición en el eje x y otra para la posición en y.
+        Returns:
+            list: Lista en forma de tuple con dos listas adentro, una para la posición en el eje x y otra para la posición en y.
+                
         """
 
         positions = []
@@ -388,19 +357,15 @@ def time_to_wall_collision(disk, width, height):
     """
     Calcula el tiempo mínimo hasta que un disco colisiona con una pared de la caja.
 
-    Parameters
-    ----------
-    disk : Disco
-        Objeto de la clase Disco que representa un disco. 
-    widht : float
-        Ancho de la caja.
-    height : float 
-        Alto de la caja. 
+    Args:
+        disk (Disco): Objeto de la clase Disco que representa un disco. 
+        widht (float): Ancho de la caja.
+        height (float):  Alto de la caja. 
 
-    Returns
-    -------
-    tuple
-        Mínimo del tiempo en x y mínimo del tiempo en y. 
+           
+    Returns: 
+        tuple: Mínimo del tiempo en x y mínimo del tiempo en y. 
+        
     """
 
     tx_min = float('inf')
@@ -429,17 +394,14 @@ def time_to_disk_collision(disk1, disk2):
     """
     Calcula el tiempo mínimo hasta que un disco colisiona con otro. 
 
-    Parameters
-    ----------
-    disk1 : Disco
-        Objeto de la clase Disco que representa un disco.
-    disk2 : Disco
-        Objeto de la clase Disco que representa un disco.
+    Args:
+        disk1 (Disco): Objeto de la clase Disco que representa un disco.
+        disk2 (Disco): Objeto de la clase Disco que representa un disco.
+        
 
-    Returns
-    -------
-    float
-        Tiempo mínimo hasta la próxima colisión entre los dos discos.
+    Returns:
+        float: Tiempo mínimo hasta la próxima colisión entre los dos discos.
+            
         Retorna float('inf') si los discos no colisionan.
     """
 
@@ -495,19 +457,18 @@ def determine_collision_event(disks, width, height):
     """
     Calcula y retorna el tipo de evento más próximo a suceder entre dos discos. 
 
-    Parameters
-    ----------
-    disks : array
-        Array de objectos de la clase Disco.
-    width: float
-        Ancho de la caja.
-    height: float
-        Alto de la caja.
+    Args:
+        disks (array): Array de objectos de la clase Disco.
+            
+        width (float): Ancho de la caja.
+            
+        height (float): Alto de la caja.
+            
 
-    Returns
-    -------
-    tuple
-        Una tupla que contiene el tipo de evento de colisión, los indices de los discos y el tiempo mínimo hasta el evento de colisión.
+    Returns:
+        
+        tuple: Una tupla que contiene el tipo de evento de colisión, los indices de los discos y el tiempo mínimo hasta el evento de colisión.
+            
     """
 
     min_time = float('inf')
@@ -532,7 +493,6 @@ def determine_collision_event(disks, width, height):
     return event_type, disk_indices, min_time
 
 
-# Example usage
 
 """
 width = 10
