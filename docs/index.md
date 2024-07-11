@@ -196,7 +196,7 @@ $$
 at^2 + bt + c
 $$
 
-donde se define $a = \sqrt{\vec{V_{rel}}}$, $b = 2(\vec{R_{rel}} \cdot \vec{V_{rel}})$ y $c = \sqrt{\vec{R_{rel}}} - (r_{1} + r_{2}^2)$.
+donde se define $a = \sqrt{\vec{V_{rel}}}$, $b = 2(\vec{R_{rel}} \cdot \vec{V_{rel}})$ y $c = \sqrt{\vec{R_{rel}}} - (r_{1} + r_{2})^2$.
 
 De esta ecuación, se obtienen resultados con el discriminante. 
 
@@ -227,7 +227,7 @@ $$
 # Histograma 
 Para realizar el histograma de la posición en x de los discos se crearon dos archivos .py, $mk\_csv-py$ y $mk\_histogram.py$
 
-## mk\_csv-py
+## mk\_csv.py
 
 ### guardar\_lista\_en\_csv(lista, nombre\_archivo)
 
