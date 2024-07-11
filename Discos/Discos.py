@@ -29,19 +29,12 @@ class Disco:
     def __init__(self, x_position, y_position, radio, color, Vx, Vy):
         """
         Args:
-        
-        x_position (float): Posición inicial del disco en el eje x.
-            
-        y_position (float): Posición inicial del disco en el eje y.
-            
-        radio (float): Radio del disco.
-            
-        color (str): Color del disco.
-            
-        Vx (float): Velocidad inicial del disco en el eje x.
-            
-        Vy (float): Velocidad inicial del disco en el eje y.
-            
+            x_position (float): Posición inicial del disco en el eje x.
+            y_position (float): Posición inicial del disco en el eje y.
+            radio (float): Radio del disco.
+            color (str): Color del disco.
+            Vx (float): Velocidad inicial del disco en el eje x.
+            Vy (float): Velocidad inicial del disco en el eje y.
         """
 
         self.x_position = x_position

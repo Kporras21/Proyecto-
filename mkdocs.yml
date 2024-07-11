@@ -42,10 +42,12 @@ plugins:
       default_handler: python
       handlers:
         python:
+          options:
+            docstring_style: google
+            rendering:
+              show_signature: true
+              show_source: false
           paths: [Discos]
-          site_dir: docs
-
-
 
 nav:
   - Home: index.md
