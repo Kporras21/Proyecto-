@@ -15,11 +15,11 @@ Para ello se implementó código orientado a objetos en Python. A continuación 
 En este método se utilizó el método de Euler para resolver las ecuaciones de movimiento tanto para el eje $x$ como para el eje $y$, dichas ecuaciones son: 
 
 $$
-x = v\_xt  
+x = v_{x}t  
 $$
 
 $$
-y = v\_yt
+y = v_{y}t
 $$
 
 Posteriormente, se guardan las posiciones en arrays. 
