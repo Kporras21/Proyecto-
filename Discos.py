@@ -500,7 +500,7 @@ def time_to_disk_collision(disk1, disk2):
 
 def determine_collision_event(disks, width, height):
     """
-    Calcula y retorna el tipo de evento màs pròximo a suceder entre dos discos. 
+    Calcula y retorna el tipo de evento más próximo a suceder entre dos discos. 
 
     Parameters
     ----------

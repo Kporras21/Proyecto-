@@ -188,7 +188,7 @@ $$
 \vec{R_{sum}}^2 = (\vec{R_{rel0}} \cdot \vec{R_{rel0}} + 2t(\vec{R_{rel0}} \vec{V_{rel}}) + t^2(\vec{V_{rel}} \cdot \vec{V_{rel}})
 $$
 
-Donde $(\vec{R_{rel0}} \cdot \vec{R_{rel0}}) = \vec{R_{rel}}^2$, $\vec{R_{rel0}} \cdot \vec{V_{rel}} = \vec{R_{rel}} \cdot \vec{V_{rel}}$ y $\vec{V_{rel}} \cdot \vec{V_{rel} = \vec{V_{rel}}^2}$. 
+donde $(\vec{R_{rel0}} \cdot \vec{R_{rel0}}) = \vec{R_{rel}}^2$, $\vec{R_{rel0}} \cdot \vec{V_{rel}} = \vec{R_{rel}} \cdot \vec{V_{rel}}$ y $\vec{V_{rel}} \cdot \vec{V_{rel}} = \vec{V_{rel}}^2$. 
 
 De esta manera se obtiene una ecuación cuadrática de la forma 
 
@@ -215,11 +215,15 @@ $$
 t = \frac{-b-\sqrt{\Delta}}{2a}
 $$
 
-### determine\_collision\_event(disk1, disk2, width, height)
+### determine\_collision\_event(disks, width, height)
 En esta función se define cuál es el evento más próximo a suceder entre una colisión con pared y una colisión entre discos. Implementa las funciones anteriores, de esta manera obtiene un tiempo para cada evento y utiliza el menor tiempo de estos.
 
 
 # Histograma 
 Para realizar el histograma de la posición en x de los discos se crearon dos archivos .py, $mk\_csv-py$ y $mk\_histogram.py$
 
-  
+## mk\_csv-py
+
+### guardar\_lista\_en\_csv(lista, nombre\_archivo)
+
+## mk\_histogram.py  
