@@ -516,7 +516,8 @@ def save_data(array, file_csv):
     """
     Guarda la información de un arreglo en un archivo.
 
-    Examples:
+    Example:
+
         >>> my_array = [1, 4, 7, 3]
         >>> save_data(my_array, "data.csv")
 
@@ -524,10 +525,7 @@ def save_data(array, file_csv):
         array (array): Arreglo que será guardado en file.
         file (str): Nombre del archivo en el que será guardado el arreglo.
 
-    Returns:
-        None
     """
-
     with open(file_csv, mode='w', newline='') as file_csv:
 
         writer_csv = csv.writer(file_csv)
@@ -542,7 +540,8 @@ def run_and_save_data(N, M, file_csv):
     """
     Corre la animación y guarda los datos de x_positions de todos los discos si se deja correr por un tiempo establecido.
 
-    Examples:
+    Example:
+
         >>> run_and_save_data(6, 2000, "data.csv")
         >>> # Cierre la ventana de animación manualmente una vez transcurrido el tiempo establecido.
         Lista de tamaño 6 x 2000 guardada en data.csv.
@@ -553,10 +552,8 @@ def run_and_save_data(N, M, file_csv):
         M (int): Número de instantes de tiempo que transcurriran, cada instante de tiempo dura 0.05 seg, entonces el tiempo establecido será 0.05 * M seg.
         file_csv (str): Nombre del archivo en el que será guardado el arreglo de posiciones.
 
-    Returns:
-        None
-    """
 
+    """
     Radius = np.sqrt(4/N)*0.5
 
     sim = DiscoSimulation(N, 5, 5, Radius)
@@ -598,7 +595,7 @@ def Histogram(N, divisions, file_csv):
     """
     Genera un histograma a partir de los datos de las posiciones de N discos.
 
-    Examples:
+    Example:
         >>> Histogram(6, 50, "data.csv")
 
     Args:
@@ -606,10 +603,8 @@ def Histogram(N, divisions, file_csv):
         divisions (int): Número de divisiones del intervalo
         file_csv (str): Nombre del archivo en el que está guardado el arreglo de posiciones.
 
-    Returns:
-        None
+    
     """
-
     all_positions_str = []
 
     with open(file_csv, 'r') as file_csv:
