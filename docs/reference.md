@@ -15,8 +15,8 @@
 
 
 ## Predicción de sucesos
-::: Discos.time_to_disk_collision
-::: Discos.determine_collision_event
+::: Discos.time\_to\_disk\_collision
+::: Discos.determine\_collision\_event
 
 
 ## Histograma

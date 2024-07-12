@@ -234,7 +234,7 @@ Este código corre la simulación de $Discos.py$ con el fin de guardar las todas
 
 Esta es una función auxilar que guarda un arreglo en un archivo CSV, será utilizado en la función $run\_and\_save\_data$ para guardar un array con todas las posiciones en el eje x de los discos.
 
-### run\_and\_save\_data(N, M, file_csv)
+### run\_and\_save\_data(N, M, file\_csv)
 
 Esta función es la que se ejecuta en el programa, corre la animacion de los discos con el número de discos y con dimensiones de 5 x 5 para la caja. El radio de los discos se determina de manera que la proporción entre área de la caja y de los discos se conservara:
 
