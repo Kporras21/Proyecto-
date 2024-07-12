@@ -49,4 +49,4 @@ def Histogram(N, divisions, file_csv, width=5):
 
     plt.show()        
 
-Histogram(4, 6, "data.csv")
+Histogram(25, 100, "data25.csv")

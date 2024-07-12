@@ -52,7 +52,7 @@ def run_and_save_data(N, M, file_csv, height=5, width=5):
         None
     """
 
-    Radius = np.sqrt(4/N)*0.5
+    Radius = np.sqrt(4/25)*0.5
 
     sim = DiscoSimulation(N, height, width, Radius)
 
@@ -66,7 +66,7 @@ def run_and_save_data(N, M, file_csv, height=5, width=5):
 
         if len(disks[0].x_positions) > M:
 
-            positions = [[sim.get_positions()[j][0][i] for i in range(M)] for j in range(N)]
+            positions = [[sim.get_positions()[j][0][i] for i in range(M)] for j in range(25)]
 
             if __name__ == "__main__":
 
@@ -77,6 +77,6 @@ def run_and_save_data(N, M, file_csv, height=5, width=5):
     
 
 
-run_and_save_data(4, 30, "data.csv")
+run_and_save_data(21, 6000, "data25.csv")
 
 print("Ya el programa terminó de correr.")
