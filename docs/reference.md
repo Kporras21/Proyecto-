@@ -21,8 +21,10 @@
 
 ## Histograma
 
+```python
 ::: mk\_csv.save\_data
 
 ::: mk\_csv.run\_and\_save\_data
 
 ::: mk\_histogram.Histogram
+
