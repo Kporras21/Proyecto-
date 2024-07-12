@@ -122,25 +122,25 @@ Esta función calcula el tiempo mínimo en el cual un disco colisiona con alguna
 Si $v_{x} > 0$ (el disco se mueve hacia la derecha), entonces:
 
 $$
-t_{xmin} = \frac{\frac{l}{2}-r-x}{v_{x}}.
+t_{xmin} = \frac{l-r-x}{v_{x}}.
 $$ 
 
 Si $v_{x} < 0$ (el disco se mueve hacia la izquierda), entonces:
 
 $$
-t_{xmin} = \frac{\frac{-l}{2}+r-x}{v_{x}}.
+t_{xmin} = \frac{-l+r-x}{v_{x}}.
 $$
 
 Si $v_{y} > 0$ (el disco se mueve hacia arriba), entonces:  
 
 $$
-t_{ymin} = \frac{\frac{a}{2}-r-y}{v_{y}}.
+t_{ymin} = \frac{a-r-y}{v_{y}}.
 $$
 
 Si $v_{y} < 0$ (el disco se mueve hacia abajo), entonces:
 
 $$
-t_{ymin} = \frac{\frac{-a}{2}+r-y}{v_{y}}.
+t_{ymin} = \frac{-a+r-y}{v_{y}}.
 $$
 
 Donde $l$ es el largo de la caja, $a$ es el ancho de la caja y $r$ el radio del disco. 
