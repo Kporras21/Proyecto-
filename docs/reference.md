@@ -25,4 +25,4 @@
 
 ::: mk\_csv.run\_and\_save\_data
 
-::: mk\_hisotgram.Histogram
+::: mk\_histogram.Histogram
