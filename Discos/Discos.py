@@ -41,9 +41,9 @@ class Disco:
 
         self.Vy = Vy
 
-        self.x_positions = [x_position]  # Lista para almacenar posiciones x a lo largo del tiempo
+        self.x_positions = [x_position]  
 
-        self.y_positions = [y_position]  # Lista para almacenar posiciones y a lo largo del tiempo
+        self.y_positions = [y_position]  
 
 
 
@@ -59,9 +59,9 @@ class Disco:
 
         self.y_position += self.Vy * dt
 
-        self.x_positions.append(self.x_position)  # Registrar nueva posición x
+        self.x_positions.append(self.x_position)  
 
-        self.y_positions.append(self.y_position)  # Registrar nueva posición y
+        self.y_positions.append(self.y_position)  
 
 
 
@@ -136,8 +136,7 @@ class Disco:
                 other_disk.Vy += relative_speed * collision_normal[1]
 
 
-
-            # Registra las posiciones después de la colisión
+            
 
             self.x_positions[-1] = self.x_position
 
@@ -156,20 +155,20 @@ class DiscoSimulation:
 
     """
 
-    def __init__(self, N, alto, ancho, radio):
+    def __init__(self, N, height, width, radio):
         """
         Args:
             N (int):  Cantidad de discos.
-            alto (float): Alto de la caja.
-            ancho (float): Ancho de la caja.
+            height (float): Alto de la caja.
+            width (float): Ancho de la caja.
             radio (float): Radio de los discos.
         """
 
-        self.N = N  # Cantidad de discos
+        self.N = N  
 
-        self.altura = alto
+        self.altura = height
 
-        self.ancho = ancho
+        self.ancho = width
 
         self.radio = radio
 
@@ -203,7 +202,7 @@ class DiscoSimulation:
 
 
 
-                # Ajustar para evitar valores excesivamente pequeños
+                
 
                 while abs(Vx) < 1.0 or abs(Vy) < 1.0:
 
@@ -213,14 +212,14 @@ class DiscoSimulation:
 
 
 
-                # Crear disco y añadirlo a la lista
+                
 
                 disco = Disco(x_position, y_position, self.radio, color, Vx, Vy)
 
                 self.discos.append(disco)
 
 
-                # Comprobar colisiones con otros discos
+                
 
                 colision = False
 
@@ -294,11 +293,10 @@ class DiscoSimulation:
             """
                     
 
-            dt = 0.05  # Tiempo discretizado ajustado para coincidir con el intervalo de 50ms
+            dt = 0.05  
 
 
-
-            # Mover discos y verificar colisiones con paredes
+            
 
             for disco in self.discos:
 
@@ -307,8 +305,7 @@ class DiscoSimulation:
                 disco.check_wall_collision(self.ancho, self.altura)
 
 
-
-            # Verificar colisiones entre discos
+            
 
             for i in range(len(self.discos)):
 
@@ -317,8 +314,7 @@ class DiscoSimulation:
                     self.discos[i].check_disk_collision(self.discos[j])
 
 
-
-            # Actualizar posiciones de los parches
+            
 
             for index, disco in enumerate(self.discos):
 
@@ -472,46 +468,36 @@ def determine_collision_event(disks, width, height):
     """
 
     min_time = float('inf')
+
     event_type = None
+
     disk_indices = (None, None)
 
     for i, disk1 in enumerate(disks):
+
         t_wall_collision = time_to_wall_collision(disk1, width, height)
+
         if t_wall_collision < min_time:
+
             min_time = t_wall_collision
+
             event_type = 'wall_collision'
+
             disk_indices = (i, None)
 
         for j in range(i + 1, len(disks)):
+
             disk2 = disks[j]
+
             t_disk_collision = time_to_disk_collision(disk1, disk2)
+
             if t_disk_collision < min_time:
+
                 min_time = t_disk_collision
+
                 event_type = 'disk_collision'
+
                 disk_indices = (i, j)
 
     return event_type, disk_indices, min_time
-
-
-
-"""
-width = 10
-height = 10
-
-
-
-sim = DiscoSimulation(3, 5, 5, 0.5)
-
-disks = sim.disk_creation()
-
-
-sim.animate_movement()
-
-event, disk_indices, time = determine_collision_event(disks, width, height)
-
-print(f"The first event is a {event} involving disks {disk_indices} occurring at t = {time:.2f} seconds")
-# Obtener posiciones registradas
-
-positions = sim.get_positions()
-"""
 
