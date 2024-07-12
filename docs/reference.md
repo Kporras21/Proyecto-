@@ -27,3 +27,6 @@
 
 ::: Discos.Histogram
 
+# Ejemplos de histogramas: 
+![4 discos](Discos/Histograma4.png)
+
