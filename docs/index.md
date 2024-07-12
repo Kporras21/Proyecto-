@@ -195,7 +195,7 @@ $$
 at^2 + bt + c
 $$
 
-donde se define $a = \sqrt{\vec{V_{rel}}}$, $b = 2(\vec{R_{rel}} \cdot \vec{V_{rel}})$ y $c = \sqrt{\vec{R_{rel}}} - (r_{1} + r_{2})^2$.
+donde se define $a = \sqrt{\vec{V_{rel}}}^2$, $b = 2(\vec{R_{rel}} \cdot \vec{V_{rel}})$ y $c = \sqrt{\vec{R_{rel}}}^2 - (r_{1} + r_{2})^2$.
 
 De esta ecuación, se obtienen resultados con el discriminante. 
 
