@@ -28,5 +28,7 @@
 ::: Discos.Histogram
 
 # Ejemplos de histogramas: 
-![4 discos](Discos/Histograma4.png)
+![4 discos](images/Histograma4.png)
+![10 discos](images/Histograma10.png)
+![25 discos](images/Histograma25.png)
 
