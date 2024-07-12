@@ -15,11 +15,11 @@ Para ello se implementó código orientado a objetos en Python. A continuación 
 En este método se utilizó el método de Euler para resolver las ecuaciones de movimiento tanto para el eje $x$ como para el eje $y$, dichas ecuaciones son: 
 
 $$
-x = v_{x}t  
+x = x_{0} + v_{x}t  
 $$
 
 $$
-y = v_{y}t
+y = y_{0} + v_{y}t
 $$
 
 Posteriormente, se guardan las posiciones en arrays. 
@@ -36,14 +36,14 @@ x + r \geq \frac{l}{2}
 $$
 
 $$
-y - r \leq \frac{-l}{2}
+y - r \leq \frac{-a}{2}
 $$
 
 $$
-y + r \geq \frac{l}{2}
+y + r \geq \frac{a}{2}
 $$
 
-donde $l$ es lado de la caja y $r$ el radio del disco.
+donde $l$ es largo de la caja, $a$ es el alto y $r$ el radio del disco.
 
 
 Si cualquiera de las ecuaciones anteriores se cumple, se invierte el signo de la velocidad, es decir, $-v_{x}$ y $-v_{y}$ según la conservación de momento lineal ya que se consideran colisiones elásticas.
@@ -83,10 +83,9 @@ v_{xrelativa} =  v_{x1} - v_{x2}
 $$
 
 $$
-v_{yrelativa} =  v_{y1} - v_{y2}
+v_{yrelativa} =  v_{y1} - v_{y2}.
 $$
 
-y se invierten las posiciones de los discos, es decir, $-x_{1}$, $-x_{2}$, $-y_{1}$ y $-y_{2}$.
 
 ## Class DiscoSimulation 
 * Esta clase cuenta con tres métodos principales:
@@ -143,13 +142,13 @@ Donde $l$ es el largo de la caja, $a$ es el ancho de la caja y $r$ el radio del 
 Esta función calcula el tiempo mínimo en el cual un disco colisiona con otro. Para ello se trabaja con cálculo de vectores. Obteniendo: 
 
 $$
-\vec{R_{rel}}  
+\vec{R_{rel}} = (x_{1} - x_{2}, y_{1} - y_{2}, ... )
 $$ 
 
 vector relativo entre los centros de los discos. 
 
 $$
-\vec{V_{rel}}
+\vec{V_{rel}} = (v_{x1} - v_{x2}, v_{y1} - v_{y2}, ... )
 $$
 
 vector relativo entre las velocidades de los discos. 
@@ -157,7 +156,7 @@ vector relativo entre las velocidades de los discos.
 De esta manera se pueden aplicar condiciones para saber qué evento sucederá: 
 
 
-Si $\sqrt{\vec{V_{rel}}} = 0$ los discos están en movimiento paralelo sin posibilidad de colisión. 
+Si $\sqrt{\vec{V_{rel}}^2} = 0$ los discos están en movimiento paralelo sin posibilidad de colisión. 
 
 
 Si este no es el caso, entonces se requiere saber el tiempo en el cual existe una colisión. Dicho tiempo se puede calcular de la siguiente manera: 
@@ -169,7 +168,7 @@ $$
 donde 
 
 $$
-\vec{R_{sum}}^2 = r_{1} + r_{2} = \vec{R_{rel}} \cdot \vec{R_{rel}}
+\vec{R_{sum}}^2 = (r_{1} + r_{2})^2 = \vec{R_{rel}} \cdot \vec{R_{rel}}
 $$
 
 y, según ecuaciones de cinemática, 
@@ -185,7 +184,7 @@ $$
 $$
 
 $$
-\vec{R_{sum}}^2 = (\vec{R_{rel0}} \cdot \vec{R_{rel0}} + 2t(\vec{R_{rel0}} \vec{V_{rel}}) + t^2(\vec{V_{rel}} \cdot \vec{V_{rel}})
+\vec{R_{sum}}^2 = \vec{R_{rel0}} \cdot \vec{R_{rel0}} + 2t(\vec{R_{rel0}} \vec{V_{rel}}) + t^2(\vec{V_{rel}} \cdot \vec{V_{rel}})
 $$
 
 donde $(\vec{R_{rel0}} \cdot \vec{R_{rel0}}) = \vec{R_{rel}}^2$, $\vec{R_{rel0}} \cdot \vec{V_{rel}} = \vec{R_{rel}} \cdot \vec{V_{rel}}$ y $\vec{V_{rel}} \cdot \vec{V_{rel}} = \vec{V_{rel}}^2$. 
