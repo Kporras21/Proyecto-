@@ -501,3 +501,144 @@ def determine_collision_event(disks, width, height):
 
     return event_type, disk_indices, min_time
 
+
+
+
+
+from Discos import DiscoSimulation
+
+import csv
+
+import numpy as np
+
+
+def save_data(array, file_csv):
+    """
+    Guarda la información de un arreglo en un archivo.
+
+    Examples:
+        >>> my_array = [1, 4, 7, 3]
+        >>> save_data(my_array, "data.csv")
+
+    Args:
+        array (array): Arreglo que será guardado en file.
+        file (str): Nombre del archivo en el que será guardado el arreglo.
+
+    Returns:
+        None
+    """
+
+    with open(file_csv, mode='w', newline='') as file_csv:
+
+        writer_csv = csv.writer(file_csv)
+
+        for row in array:
+
+            writer_csv.writerow(row)
+
+
+
+def run_and_save_data(N, M, file_csv):
+    """
+    Corre la animación y guarda los datos de x_positions de todos los discos si se deja correr por un tiempo establecido.
+
+    Examples:
+        >>> run_and_save_data(6, 2000, "data.csv")
+        >>> # Cierre la ventana de animación manualmente una vez transcurrido el tiempo establecido.
+        Lista de tamaño 6 x 2000 guardada en data.csv.
+
+
+    Args:
+        N (int): Número de discos que se registrarán en el archivo.
+        M (int): Número de instantes de tiempo que transcurriran, cada instante de tiempo dura 0.05 seg, entonces el tiempo establecido será 0.05 * M seg.
+        file_csv (str): Nombre del archivo en el que será guardado el arreglo de posiciones.
+
+    Returns:
+        None
+    """
+
+    Radius = np.sqrt(4/N)*0.5
+
+    sim = DiscoSimulation(N, 5, 5, Radius)
+
+    disks = sim.disk_creation()
+
+    sim.animate_movement()
+
+    while True:
+
+        print("Transcurrieron " + str(len(disks[0].x_positions)) + " instantes de tiempo")
+
+        if len(disks[0].x_positions) > M:
+
+            positions = [[sim.get_positions()[j][0][i] for i in range(M)] for j in range(N)]
+
+            if __name__ == "__main__":
+
+                save_data(positions, file_csv)
+
+                print("Lista de tamaño " + str(len(positions)) + " x " + str(len(positions[0])) + f" guardada en {file_csv}.")
+        break
+
+
+
+run_and_save_data(25, 6000, "data25.csv")
+
+print("Ya el programa terminó de correr.")
+
+
+import csv
+
+import matplotlib.pyplot as plt
+
+import numpy as np
+
+
+def Histogram(N, divisions, file_csv):
+    """
+    Genera un histograma a partir de los datos de las posiciones de N discos.
+
+    Examples:
+        >>> Histogram(6, 50, "data.csv")
+
+    Args:
+        N (int): Número de discos registrados en el archivo .csv (Solo importante para el título)
+        divisions (int): Número de divisiones del intervalo
+        file_csv (str): Nombre del archivo en el que está guardado el arreglo de posiciones.
+
+    Returns:
+        None
+    """
+
+    all_positions_str = []
+
+    with open(file_csv, 'r') as file_csv:
+
+        lector_csv = csv.reader(file_csv)
+
+        for row in lector_csv:
+
+            all_positions_str.extend(row)
+
+    all_positions = [float(i) for i in all_positions_str]
+
+    plt.rcParams.update({'figure.figsize':(7,5), 'figure.dpi':100})
+
+    weights = np.ones_like(all_positions) / len(all_positions)
+
+    plt.hist(all_positions, bins=divisions, weights=weights)
+
+    plt.gca().set(title=f'Histograma de probabilidad para {N} discos', ylabel='Probabilidad')
+
+    plt.xlim(-2.5, 2.5)
+
+    plt.xlabel("Posición x")
+
+    plt.show()
+
+Histogram(25, 100, "data25.csv")
+~
+~
+~
+~
+~                                             
