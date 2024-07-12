@@ -181,20 +181,18 @@ $$
 y, según ecuaciones de cinemática, 
 
 $$
-\vec{R_{rel}} = \vec{R_{rel0}} + t\vec{V_{rel}}.
+\vec{R_{rel}(t)} = \vec{R_{rel}} + t\vec{V_{rel}}.
 $$
  
 Por lo tanto, 
 
 $$
-\vec{R_{sum}}^2 = (\vec{R_{rel0}} + t\vec{V_{rel}}) \cdot  (\vec{R_{rel0}} + t\vec{V_{rel}})
+\vec{R_{sum}}^2 = (\vec{R_{rel}} + t\vec{V_{rel}}) \cdot  (\vec{R_{rel}} + t\vec{V_{rel}})
 $$
 
 $$
-\vec{R_{sum}}^2 = \vec{R_{rel0}} \cdot \vec{R_{rel0}} + 2t(\vec{R_{rel0}} \cdot  \vec{V_{rel}}) + t^2(\vec{V_{rel}} \cdot \vec{V_{rel}})
-$$
-
-donde $(\vec{R_{rel0}} \cdot \vec{R_{rel0}}) = \vec{R_{rel}}^2$, $\vec{R_{rel0}} \cdot \vec{V_{rel}} = \vec{R_{rel}} \cdot \vec{V_{rel}}$ y $\vec{V_{rel}} \cdot \vec{V_{rel}} = \vec{V_{rel}}^2$. 
+\vec{R_{sum}}^2 = \vec{R_{rel}} \cdot \vec{R_{rel}} + 2t(\vec{R_{rel}} \cdot  \vec{V_{rel}}) + t^2(\vec{V_{rel}} \cdot \vec{V_{rel}})
+$$ 
 
 De esta manera se obtiene una ecuación cuadrática de la forma 
 
@@ -202,7 +200,7 @@ $$
 at^2 + bt + c
 $$
 
-donde se define $a = \sqrt{\vec{V_{rel}}}^2$, $b = 2(\vec{R_{rel}} \cdot \vec{V_{rel}})$ y $c = \sqrt{\vec{R_{rel}}}^2 - (r_{1} + r_{2})^2$.
+donde se define $a = \vec{V_{rel}}^2$, $b = 2(\vec{R_{rel}} \cdot \vec{V_{rel}})$ y $c = \vec{R_{rel}}^2 - (r_{1} + r_{2})^2$.
 
 De esta ecuación, se obtienen resultados con el discriminante. 
 
