@@ -631,9 +631,4 @@ def Histogram(N, divisions, file_csv):
 
     plt.show()
 
-Histogram(25, 100, "data25.csv")
-~
-~
-~
-~
-~                                             
+Histogram(25, 100, "data25.csv")                                           
