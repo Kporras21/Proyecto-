@@ -224,11 +224,36 @@ En esta función se define cuál es el evento más próximo a suceder entre una 
 
 
 # Histograma 
-Para realizar el histograma de la posición en x de los discos se crearon dos archivos .py, $mk\_csv.py$ y $mk\_histogram.py$
+Para realizar el histograma de la posición en x de los discos se crearon dos archivos .py, $mk\_csv.py$ se utiliza para registrar los datos de las posiciones x de los discos en un archivo CSV y  $mk\_histogram.py$ para hacer un histograma con los datos de ese archivo.
 
 ## mk\_csv.py
 
-### guardar\_lista\_en\_csv(lista, nombre\_archivo)
+Este código corre la simulación de $Discos.py$ con el fin de guardar las todas posiciones en el eje x de todos los discos durante un tiempo establecido.
+
+### save\_data(array, file\_csv)
+
+Esta es una función auxilar que guarda un arreglo en un archivo CSV, será utilizado en la función $run\_and\_save\_data$ para guardar un array con todas las posiciones en el eje x de los discos.
+
+### run\_and\_save\_data(N, M, file_csv)
+
+Esta función es la que se ejecuta en el programa, corre la animacion de los discos con el número de discos y con dimensiones de 5 x 5 para la caja. El radio de los discos se determina de manera que la proporción entre área de la caja y de los discos se conservara:
+
+$$
+\frac{\pi R^2 N}{w·h} = \frac{\pi R'^2 N'}{w·h}
+$$
+
+Y se escogió la proporción de manera que para $N$ = 4, el radio tenga que ser $R$ = 0.5 unidades de longitud, por lo que el código calcula el radio de la siguiente manera:
+
+$$
+Radius = \sqrt{\frac{4}{N}0.5}
+$$
+
+Finalmente, si la animación es finalizada después de que transcurran $M$ instantes de tiempo, se ejecuta la $save\_data$ y guarda las posiciones en un archivo CSV
 
 ## mk\_histogram.py  
 
+Este programa consiste en la ejecución de una sola función, con la cual se genera un histograma.
+
+### Histogram(N, divisions, file\_csv) 
+
+Esta función toma el archivo CSV y guarda toda su información en un arreglo unidimensional, luego con ese arreglo genera un histograma normalizado, es decir, que la integral de todo el histograma da 1, lo cual permite interpretarlo como un histograma de probabilidad de encontrar una partícula en diferentes posiciones del eje x.

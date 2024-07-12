@@ -31,12 +31,12 @@ def save_data(array, file_csv):
 
 
 
-def run_and_save_data(N, M, file_csv, height=5, width=5):
+def run_and_save_data(N, M, file_csv):
     """
     Corre la animación y guarda los datos de x_positions de todos los discos si se deja correr por un tiempo establecido.
 
     Examples:
-        >>> run_and_save_data(6, 2000, "data.csv", 10, 10)
+        >>> run_and_save_data(6, 2000, "data.csv")
         >>> # Cierre la ventana de animación manualmente una vez transcurrido el tiempo establecido.
         Lista de tamaño 6 x 2000 guardada en data.csv.
         
@@ -45,16 +45,14 @@ def run_and_save_data(N, M, file_csv, height=5, width=5):
         N (int): Número de discos que se registrarán en el archivo.
         M (int): Número de instantes de tiempo que transcurriran, cada instante de tiempo dura 0.05 seg, entonces el tiempo establecido será 0.05 * M seg.
         file_csv (str): Nombre del archivo en el que será guardado el arreglo de posiciones.
-        height (float, optional): Altura de la caja en la que se encuentran los discos. Valor por defecto: 5.
-        width (float, optional): Ancho de la caja en la que se encuentran los discos. Valor por defecto: 5.
-        
+
     Returns: 
         None
     """
 
-    Radius = np.sqrt(4/25)*0.5
+    Radius = np.sqrt(4/N)*0.5
 
-    sim = DiscoSimulation(N, height, width, Radius)
+    sim = DiscoSimulation(N, 5, 5, Radius)
 
     disks = sim.disk_creation()
 
@@ -66,7 +64,7 @@ def run_and_save_data(N, M, file_csv, height=5, width=5):
 
         if len(disks[0].x_positions) > M:
 
-            positions = [[sim.get_positions()[j][0][i] for i in range(M)] for j in range(25)]
+            positions = [[sim.get_positions()[j][0][i] for i in range(M)] for j in range(N)]
 
             if __name__ == "__main__":
 
@@ -77,6 +75,6 @@ def run_and_save_data(N, M, file_csv, height=5, width=5):
     
 
 
-run_and_save_data(21, 6000, "data25.csv")
+run_and_save_data(25, 6000, "data25.csv")
 
 print("Ya el programa terminó de correr.")

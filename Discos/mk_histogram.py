@@ -6,18 +6,17 @@ import numpy as np
 
 
 
-def Histogram(N, divisions, file_csv, width=5):
+def Histogram(N, divisions, file_csv):
     """
     Genera un histograma a partir de los datos de las posiciones de N discos.
 
     Examples:
-        >>> Histogram(6, 50, "data.csv", 6)
+        >>> Histogram(6, 50, "data.csv")
         
     Args:
         N (int): Número de discos registrados en el archivo .csv (Solo importante para el título)
         divisions (int): Número de divisiones del intervalo
         file_csv (str): Nombre del archivo en el que está guardado el arreglo de posiciones.
-        width (float, optional): Ancho de la caja en la que se encuentran los discos. Valor por defecto: 5.
 
     Returns: 
         None
@@ -43,7 +42,7 @@ def Histogram(N, divisions, file_csv, width=5):
 
     plt.gca().set(title=f'Histograma de probabilidad para {N} discos', ylabel='Probabilidad')
 
-    plt.xlim(-0.5*width, 0.5*width)
+    plt.xlim(-2.5, 2.5)
 
     plt.xlabel("Posición x")
 
