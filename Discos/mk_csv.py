@@ -1,50 +1,82 @@
 from Discos import DiscoSimulation
 
-from Discos import Disco
-
 import csv
 
 import numpy as np
 
-# Example usage
-width = 10
-height = 10
 
-N = 4
-Radius = np.sqrt(4/N)*0.5
-sim = DiscoSimulation(N, 5, 5, Radius)
-disks = sim.disk_creation()
+def save_data(array, file_csv):
+    """
+    Guarda la información de un arreglo en un archivo.
 
-sim.animate_movement()
+    Examples:
+        >>> my_array = [1, 4, 7, 3]
+        >>> save_data(my_array, "data.csv")
 
-M= 1000
+    Args:
+        array (array): Arreglo que será guardado en file.
+        file (str): Nombre del archivo en el que será guardado el arreglo.
 
-def guardar_lista_en_csv(lista, nombre_archivo):
-    with open(nombre_archivo, mode='w', newline='') as archivo_csv:
-        escritor_csv = csv.writer(archivo_csv)
-        for fila in lista:
-            escritor_csv.writerow(fila)
+    Returns: 
+        None
+    """
+
+    with open(file_csv, mode='w', newline='') as file_csv:
+
+        writer_csv = csv.writer(file_csv)
+
+        for row in array:
+
+            writer_csv.writerow(row)
 
 
 
-while True:
-    if len(disks[0].x_positions) > M:
+def run_and_save_data(N, M, file_csv, height=5, width=5):
+    """
+    Corre la animación y guarda los datos de x_positions de todos los discos si se deja correr por un tiempo establecido.
 
-        lista = [[sim.get_positions()[j][0][i] for i in range(M)] for j in range(N)]
-        """"
-        lista = [disks[k].x_positions[:M] for k in range(N)]
-"""
-        if __name__ == "__main__":
+    Examples:
+        >>> run_and_save_data(6, 2000, "data.csv", 10, 10)
+        >>> # Cierre la ventana de animación manualmente una vez transcurrido el tiempo establecido.
+        Lista de tamaño 6 x 2000 guardada en data.csv.
+        
+
+    Args:
+        N (int): Número de discos que se registrarán en el archivo.
+        M (int): Número de instantes de tiempo que transcurriran, cada instante de tiempo dura 0.05 seg, entonces el tiempo establecido será 0.05 * M seg.
+        file_csv (str): Nombre del archivo en el que será guardado el arreglo de posiciones.
+        height (float, optional): Altura de la caja en la que se encuentran los discos. Valor por defecto: 5.
+        width (float, optional): Ancho de la caja en la que se encuentran los discos. Valor por defecto: 5.
+        
+    Returns: 
+        None
+    """
+
+    Radius = np.sqrt(4/N)*0.5
+
+    sim = DiscoSimulation(N, height, width, Radius)
+
+    disks = sim.disk_creation()
+
+    sim.animate_movement()
     
-        #Guarda la lista en un archivo CSV
-            archivo = 'positions.csv'
-            guardar_lista_en_csv(lista, archivo)
-            print(f"Lista guardada en {archivo}")
+    while True:
 
+        print("Transcurrieron " + str(len(disks[0].x_positions)) + " instantes de tiempo")
+
+        if len(disks[0].x_positions) > M:
+
+            positions = [[sim.get_positions()[j][0][i] for i in range(M)] for j in range(N)]
+
+            if __name__ == "__main__":
+
+                save_data(positions, file_csv)
+
+                print("Lista de tamaño " + str(len(positions)) + " x " + str(len(positions[0])) + f" guardada en {file_csv}.")
         break
+    
 
-print("El tamaño de xpos1 es " + str(len(disks[0].x_positions)))
-print("El tamaño del get es " + str(len(sim.get_positions()[2][1])))
-print("El tamaño de lista es " + str(len(lista)) + "x" + str(len(lista[0])))
 
-print("Ya el programa corrió")
+run_and_save_data(4, 30, "data.csv")
+
+print("Ya el programa terminó de correr.")

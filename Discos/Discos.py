@@ -242,7 +242,7 @@ class DiscoSimulation:
 
     def animate_movement(self):
         """
-        Asigna a cada disco las dimensiones de un circulo y crea una animación de vomiento para todos los discos en la caja.
+        Asigna a cada disco las dimensiones de un circulo y crea una animación de movimiento para todos los discos en la caja.
         """
 
         fig, ax = plt.subplots()
