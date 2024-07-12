@@ -89,7 +89,7 @@ $$
 Las nuevas velocidades estarán dadas por la proyección ortogonal de la velocidad relativa sobre el vector unitario entre el disco 1 y el disco 2. Es decir: 
 
 $$
-\vec{V} = \pm (\vec{V_{rel}} \dot \hat{r}) \dot \hat{r}
+\vec{V} = \pm ( \vec{V_{rel}} \dot \hat{x} ) \dot \hat{x}
 $$
 
 donde \hat{r} es el vector unitario de de la entre el disco 1 y disco 2.  
