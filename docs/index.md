@@ -86,6 +86,13 @@ $$
 v_{yrelativa} =  v_{y1} - v_{y2}.
 $$
 
+Las nuevas velocidades estarán dadas por la proyección ortogonal de la velocidad relativa sobre el vector unitario entre el disco 1 y el disco 2. Es decir: 
+
+$$
+\vec{V} = \pm (\vec{V_{rel}} \dot \hat{r}) \dot \hat{r}
+$$
+
+donde \hat{r} es el vector unitario de de la entre el disco 1 y disco 2.  
 
 ## Class DiscoSimulation 
 * Esta clase cuenta con tres métodos principales:
@@ -217,14 +224,9 @@ $$
 ### determine\_collision\_event(disks, width, height)
 En esta función se define cuál es el evento más próximo a suceder entre una colisión con pared y una colisión entre discos. Implementa las funciones anteriores, de esta manera obtiene un tiempo para cada evento y utiliza el menor tiempo de estos.
 
-# Resultado Discos.py
-
-$$
-KEVIN PONE AQUÍ EL RESULTADO DE LOS DISCOS, TAMBIÉN EN REFERENCE
-$$
 
 # Histograma 
-Para realizar el histograma de la posición en x de los discos se crearon dos archivos .py, $mk\_csv-py$ y $mk\_histogram.py$
+Para realizar el histograma de la posición en x de los discos se crearon dos archivos .py, $mk\_csv.py$ y $mk\_histogram.py$
 
 ## mk\_csv.py
 
@@ -232,8 +234,3 @@ Para realizar el histograma de la posición en x de los discos se crearon dos ar
 
 ## mk\_histogram.py  
 
-# Resultado Histograma
-
-$$
-KEVIN PONÉ AQUÍ LA IMAGEN DEL HISTOGRAMA, TAMBIÉN EN REFERENCE 
-$$
