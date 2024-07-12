@@ -15,15 +15,15 @@
 
 
 ## Predicción de sucesos
-::: Discos.time\_to\_disk\_collision
-::: Discos.determine\_collision\_event
+::: Discos.time_to_disk_collision
+::: Discos.determine_collision_event
 
 
 ## Histograma
 
-::: Discos.save\_data
+::: Discos.save_data
 
-::: Discos.run\_and\_save\_data
+::: Discos.run_and_save_data
 
 ::: Discos.Histogram
 
