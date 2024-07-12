@@ -370,19 +370,19 @@ def time_to_wall_collision(disk, width, height):
 
     if disk.Vx > 0:
 
-        tx_min = (width - disk.radio - disk.x_position) / disk.Vx
+        tx_min = (width / 2 - disk.radio - disk.x_position) / disk.Vx
 
     elif disk.Vx < 0:
 
-        tx_min = (-width + disk.radio - disk.x_position) / disk.Vx
+        tx_min = (-width / 2 + disk.radio - disk.x_position) / disk.Vx
 
     if disk.Vy > 0:
 
-        ty_min = (height - disk.radio - disk.y_position) / disk.Vy
+        ty_min = (height / 2 - disk.radio - disk.y_position) / disk.Vy
 
     elif disk.Vy < 0:
 
-        ty_min = (-height + disk.radio - disk.y_position) / disk.Vy
+        ty_min = (-height / 2 + disk.radio - disk.y_position) / disk.Vy
 
     return min(tx_min, ty_min)
 
