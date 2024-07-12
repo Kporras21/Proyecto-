@@ -184,7 +184,7 @@ $$
 $$
 
 $$
-\vec{R_{sum}}^2 = \vec{R_{rel0}} \cdot \vec{R_{rel0}} + 2t(\vec{R_{rel0}} \vec{V_{rel}}) + t^2(\vec{V_{rel}} \cdot \vec{V_{rel}})
+\vec{R_{sum}}^2 = \vec{R_{rel0}} \cdot \vec{R_{rel0}} + 2t(\vec{R_{rel0}} \cdot  \vec{V_{rel}}) + t^2(\vec{V_{rel}} \cdot \vec{V_{rel}})
 $$
 
 donde $(\vec{R_{rel0}} \cdot \vec{R_{rel0}}) = \vec{R_{rel}}^2$, $\vec{R_{rel0}} \cdot \vec{V_{rel}} = \vec{R_{rel}} \cdot \vec{V_{rel}}$ y $\vec{V_{rel}} \cdot \vec{V_{rel}} = \vec{V_{rel}}^2$. 
