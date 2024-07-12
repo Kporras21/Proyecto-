@@ -1,0 +1,697 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="reference/">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+    
+    
+      
+        <title>Dinámica Molecular</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dinamica-molecular-en-dos-dimensiones-discos-solidos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="." title="Dinámica Molecular" class="md-header__button md-logo" aria-label="Dinámica Molecular" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dinámica Molecular
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="reference/" class="md-tabs__link">
+        
+  
+    
+  
+  API Reference
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Dinámica Molecular" class="md-nav__button md-logo" aria-label="Dinámica Molecular" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Dinámica Molecular
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#class-disco" class="md-nav__link">
+    <span class="md-ellipsis">
+      Class Disco
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Class Disco">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#moveself-dt" class="md-nav__link">
+    <span class="md-ellipsis">
+      move(self, dt)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check_wall_collisionself-width-height" class="md-nav__link">
+    <span class="md-ellipsis">
+      check_wall_collision(self, width, height)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check_disk_collisionself-other_disk" class="md-nav__link">
+    <span class="md-ellipsis">
+      check_disk_collision(self, other_disk)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#class-discosimulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Class DiscoSimulation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Class DiscoSimulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#disk_creationself" class="md-nav__link">
+    <span class="md-ellipsis">
+      disk_creation(self)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#animate_movementself" class="md-nav__link">
+    <span class="md-ellipsis">
+      animate_movement(self)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_positionsself" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_positions(self)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones-fuera-de-las-clases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funciones fuera de las clases.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evento-mas-probable-a-suceder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evento más probable a suceder.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Evento más probable a suceder.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#time_to_wall_collisiondisk-width-height" class="md-nav__link">
+    <span class="md-ellipsis">
+      time_to_wall_collision(disk, width, height)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time_to_disk_collisiondisk1-disk2" class="md-nav__link">
+    <span class="md-ellipsis">
+      time_to_disk_collision(disk1, disk2)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#determine_collision_eventdisks-width-height" class="md-nav__link">
+    <span class="md-ellipsis">
+      determine_collision_event(disks, width, height)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="dinamica-molecular-en-dos-dimensiones-discos-solidos">Dinámica molecular en dos dimensiones: discos sólidos.</h1>
+<p>El objetivo consiste en modelar el movimiento en el tiempo de <span class="arithmatex">\(N\)</span> cantidad de discos que se encuentran adentro de una caja de dos dimensiones y cuyo lado mide <span class="arithmatex">\(1 (cm, m, mm, etc)\)</span>. Los discos pueden colisionar entre ellos o con las paredes de la caja. </p>
+<p>Para ello se implementó código orientado a objetos en Python. A continuación se detallarán las dos clases principales del código. </p>
+<h2 id="class-disco">Class Disco</h2>
+<ul>
+<li>Esta clase cuenta con tres métodos principales:</li>
+<li>move(self, dt)</li>
+<li>check_wall_collision(self, width, height)</li>
+<li>check_disk_collision(self, other_disk)</li>
+</ul>
+<h3 id="moveself-dt">move(self, dt)</h3>
+<p>En este método se utilizó el método de Euler para resolver las ecuaciones de movimiento tanto para el eje <span class="arithmatex">\(x\)</span> como para el eje <span class="arithmatex">\(y\)</span>, dichas ecuaciones son: </p>
+<div class="arithmatex">\[
+x = x_{0} + v_{x}t  
+\]</div>
+<div class="arithmatex">\[
+y = y_{0} + v_{y}t
+\]</div>
+<p>Posteriormente, se guardan las posiciones en arrays. </p>
+<h3 id="check_wall_collisionself-width-height">check_wall_collision(self, width, height)</h3>
+<p>Este método comprueba que el disco colisionó con la pared, para ello se utilizan las siguientes ecuaciones:</p>
+<div class="arithmatex">\[
+x - r \leq \frac{-l}{2}
+\]</div>
+<div class="arithmatex">\[
+x + r \geq \frac{l}{2}
+\]</div>
+<div class="arithmatex">\[
+y - r \leq \frac{-a}{2}
+\]</div>
+<div class="arithmatex">\[
+y + r \geq \frac{a}{2}
+\]</div>
+<p>donde <span class="arithmatex">\(l\)</span> es largo de la caja, <span class="arithmatex">\(a\)</span> es el alto y <span class="arithmatex">\(r\)</span> el radio del disco.</p>
+<p>Si cualquiera de las ecuaciones anteriores se cumple, se invierte el signo de la velocidad, es decir, <span class="arithmatex">\(-v_{x}\)</span> y <span class="arithmatex">\(-v_{y}\)</span> según la conservación de momento lineal ya que se consideran colisiones elásticas.</p>
+<h3 id="check_disk_collisionself-other_disk">check_disk_collision(self, other_disk)</h3>
+<p>Este método comprueba la colisión entre discos utilizando la distancia entre los centros de los discos, es decir</p>
+<div class="arithmatex">\[
+d = \sqrt{dx^2 + dy^2}
+\]</div>
+<p>donde</p>
+<div class="arithmatex">\[
+dx = x_{1} - x_{2}
+\]</div>
+<p>y</p>
+<div class="arithmatex">\[
+dy = y_{1} - y_{2}
+\]</div>
+<p>donde el subíndice <span class="arithmatex">\(1\)</span> o <span class="arithmatex">\(2\)</span> indica disco 1 o disco 2 respectivamente.</p>
+<p>Si se cumple que</p>
+<div class="arithmatex">\[
+d &lt; r_{1} + r_{2}
+\]</div>
+<p>existe una colisión y se toma en cuenta una relocidad relativa dada por</p>
+<div class="arithmatex">\[
+v_{xrelativa} =  v_{x1} - v_{x2}
+\]</div>
+<div class="arithmatex">\[
+v_{yrelativa} =  v_{y1} - v_{y2}.
+\]</div>
+<p>Las nuevas velocidades estarán dadas por la proyección ortogonal de la velocidad relativa sobre el vector unitario entre el disco 1 y el disco 2. Es decir: </p>
+<div class="arithmatex">\[
+\vec{V} = \pm ( \vec{V_{rel}} \cdot \hat{r} ) \cdot \hat{r}
+\]</div>
+<p>donde \hat{r} es el vector unitario de de la entre el disco 1 y disco 2.  </p>
+<h2 id="class-discosimulation">Class DiscoSimulation</h2>
+<ul>
+<li>Esta clase cuenta con tres métodos principales:</li>
+<li>disk_creation(self)</li>
+<li>animate_movement(self)</li>
+<li>get_positions(self)</li>
+</ul>
+<h3 id="disk_creationself">disk_creation(self)</h3>
+<p>Este método inicializa las posiciones y velocidades iniciales de cada disco utilizando la función <span class="arithmatex">\(random\)</span> y la clase Disco (también inicializa el color del disco). Por otro lado, calcula la distancia entre discos y verifica si hay o no colisión entre discos.</p>
+<h3 id="animate_movementself">animate_movement(self)</h3>
+<p>Este método le da las características de circulo a cada disco, es decir, toma en cuenta que cada disco cubre un porcentaje de área en toda la caja. Por otro lado, crea la animación y le da movimiento a los discos con forme avanza el tiempo. Utiliza los métodos de la clase Disco para animar la colisón con pared y con otro disco.</p>
+<h3 id="get_positionsself">get_positions(self)</h3>
+<p>Este método guarda las posiciones en el eje x y en el eje y de cada disco en listas.</p>
+<h2 id="funciones-fuera-de-las-clases">Funciones fuera de las clases.</h2>
+<p>Además de utilizar clases, se crearon diversas funciones independientes para obtener el tipo de evento màs probable a suceder en un tiempo <span class="arithmatex">\(t\)</span> y para visualizar un histograma. </p>
+<h2 id="evento-mas-probable-a-suceder">Evento más probable a suceder.</h2>
+<p>La idea de esta parte es obtener cuál es el evento más probable a suceder para determinado disco, es decir, a partir del tiempo inicial, qué evento sucede primero, ya sea colisión con pared o colisión con otro disco. Para ello se crearon tres funciones que se detallan a continuación.</p>
+<h3 id="time_to_wall_collisiondisk-width-height">time_to_wall_collision(disk, width, height)</h3>
+<p>Esta función calcula el tiempo mínimo en el cual un disco colisiona con alguna pared de la caja. Para ello se implementaron las siguientes condiciones: </p>
+<p>Si <span class="arithmatex">\(v_{x} &gt; 0\)</span> (el disco se mueve hacia la derecha), entonces:</p>
+<div class="arithmatex">\[
+t_{xmin} = \frac{\frac{l}{2}-r-x}{v_{x}}.
+\]</div>
+<p>Si <span class="arithmatex">\(v_{x} &lt; 0\)</span> (el disco se mueve hacia la izquierda), entonces:</p>
+<div class="arithmatex">\[
+t_{xmin} = \frac{-\frac{l}{2}+r-x}{v_{x}}.
+\]</div>
+<p>Si <span class="arithmatex">\(v_{y} &gt; 0\)</span> (el disco se mueve hacia arriba), entonces:  </p>
+<div class="arithmatex">\[
+t_{ymin} = \frac{\frac{a}{2}-r-y}{v_{y}}.
+\]</div>
+<p>Si <span class="arithmatex">\(v_{y} &lt; 0\)</span> (el disco se mueve hacia abajo), entonces:</p>
+<div class="arithmatex">\[
+t_{ymin} = \frac{-\frac{a}{2}+r-y}{v_{y}}.
+\]</div>
+<p>Donde <span class="arithmatex">\(l\)</span> es el largo de la caja, <span class="arithmatex">\(a\)</span> es el ancho de la caja y <span class="arithmatex">\(r\)</span> el radio del disco. </p>
+<h3 id="time_to_disk_collisiondisk1-disk2">time_to_disk_collision(disk1, disk2)</h3>
+<p>Esta función calcula el tiempo mínimo en el cual un disco colisiona con otro. Para ello se trabaja con cálculo de vectores. Obteniendo: </p>
+<div class="arithmatex">\[
+\vec{R_{rel}} = (x_{1} - x_{2}, y_{1} - y_{2}, ... )
+\]</div>
+<p>vector relativo entre los centros de los discos. </p>
+<div class="arithmatex">\[
+\vec{V_{rel}} = (v_{x1} - v_{x2}, v_{y1} - v_{y2}, ... )
+\]</div>
+<p>vector relativo entre las velocidades de los discos. </p>
+<p>De esta manera se pueden aplicar condiciones para saber qué evento sucederá: </p>
+<p>Si <span class="arithmatex">\(\sqrt{\vec{V_{rel}}^2} = 0\)</span> los discos están en movimiento paralelo sin posibilidad de colisión. </p>
+<p>Si este no es el caso, entonces se requiere saber el tiempo en el cual existe una colisión. Dicho tiempo se puede calcular de la siguiente manera: </p>
+<div class="arithmatex">\[
+\vec{R_{rel}}^2 = \vec{R_{sum}}^2
+\]</div>
+<p>donde </p>
+<div class="arithmatex">\[
+\vec{R_{sum}}^2 = (r_{1} + r_{2})^2 = \vec{R_{rel}} \cdot \vec{R_{rel}}
+\]</div>
+<p>y, según ecuaciones de cinemática, </p>
+<div class="arithmatex">\[
+\vec{R_{rel}(t)} = \vec{R_{rel}} + t\vec{V_{rel}}.
+\]</div>
+<p>Por lo tanto, </p>
+<div class="arithmatex">\[
+\vec{R_{sum}}^2 = (\vec{R_{rel}} + t\vec{V_{rel}}) \cdot  (\vec{R_{rel}} + t\vec{V_{rel}})
+\]</div>
+<div class="arithmatex">\[
+\vec{R_{sum}}^2 = \vec{R_{rel}} \cdot \vec{R_{rel}} + 2t(\vec{R_{rel}} \cdot  \vec{V_{rel}}) + t^2(\vec{V_{rel}} \cdot \vec{V_{rel}})
+\]</div>
+<p>De esta manera se obtiene una ecuación cuadrática de la forma </p>
+<div class="arithmatex">\[
+at^2 + bt + c
+\]</div>
+<p>donde se define <span class="arithmatex">\(a = \vec{V_{rel}}^2\)</span>, <span class="arithmatex">\(b = 2(\vec{R_{rel}} \cdot \vec{V_{rel}})\)</span> y <span class="arithmatex">\(c = \vec{R_{rel}}^2 - (r_{1} + r_{2})^2\)</span>.</p>
+<p>De esta ecuación, se obtienen resultados con el discriminante. </p>
+<p>Si <span class="arithmatex">\(\Delta &lt; 0\)</span> no existe colisión. </p>
+<p>Si <span class="arithmatex">\(\Delta = 0\)</span> los discos colisionan en un único punto.</p>
+<p>Si <span class="arithmatex">\(\Delta &gt; 0\)</span> hay dos momentos en los que los discos podrían colisionar en el futuro (de aquí la necesidad de buscar el tiempo mínimo para obtener el tiempo más pequeño).</p>
+<p>De esta forma se obtiene el tiempo dado por:</p>
+<div class="arithmatex">\[
+t = \frac{-b-\sqrt{\Delta}}{2a}
+\]</div>
+<h3 id="determine_collision_eventdisks-width-height">determine_collision_event(disks, width, height)</h3>
+<p>En esta función se define cuál es el evento más próximo a suceder entre una colisión con pared y una colisión entre discos. Implementa las funciones anteriores, de esta manera obtiene un tiempo para cada evento y utiliza el menor tiempo de estos.</p>
+<h1 id="histograma">Histograma</h1>
+<p>Para realizar el histograma de la posición en x de los discos se crearon dos archivos .py, <span class="arithmatex">\(mk\_csv.py\)</span> se utiliza para registrar los datos de las posiciones x de los discos en un archivo CSV y  <span class="arithmatex">\(mk\_histogram.py\)</span> para hacer un histograma con los datos de ese archivo.</p>
+<h2 id="mk_csvpy">mk_csv.py</h2>
+<p>Este código corre la simulación de <span class="arithmatex">\(Discos.py\)</span> con el fin de guardar las todas posiciones en el eje x de todos los discos durante un tiempo establecido.</p>
+<h3 id="save_dataarray-file_csv">save_data(array, file_csv)</h3>
+<p>Esta es una función auxilar que guarda un arreglo en un archivo CSV, será utilizado en la función <span class="arithmatex">\(run\_and\_save\_data\)</span> para guardar un array con todas las posiciones en el eje x de los discos.</p>
+<h3 id="run_and_save_datan-m-file_csv">run_and_save_data(N, M, file_csv)</h3>
+<p>Esta función es la que se ejecuta en el programa, corre la animacion de los discos con el número de discos y con dimensiones de 5 x 5 para la caja. El radio de los discos se determina de manera que la proporción entre área de la caja y de los discos se conservara:</p>
+<div class="arithmatex">\[
+\frac{\pi R^2 N}{w·h} = \frac{\pi R'^2 N'}{w·h}
+\]</div>
+<p>Y se escogió la proporción de manera que para <span class="arithmatex">\(N\)</span> = 4, el radio tenga que ser <span class="arithmatex">\(R\)</span> = 0.5 unidades de longitud, por lo que el código calcula el radio de la siguiente manera:</p>
+<div class="arithmatex">\[
+Radius = \sqrt{\frac{4}{N}0.5}
+\]</div>
+<p>Finalmente, si la animación es finalizada después de que transcurran <span class="arithmatex">\(M\)</span> instantes de tiempo, se ejecuta la <span class="arithmatex">\(save\_data\)</span> y guarda las posiciones en un archivo CSV</p>
+<h2 id="mk_histogrampy">mk_histogram.py</h2>
+<p>Este programa consiste en la ejecución de una sola función, con la cual se genera un histograma.</p>
+<h3 id="histogramn-divisions-file_csv">Histogram(N, divisions, file_csv)</h3>
+<p>Esta función toma el archivo CSV y guarda toda su información en un arreglo unidimensional, luego con ese arreglo genera un histograma normalizado, es decir, que la integral de todo el histograma da 1, lo cual permite interpretarlo como un histograma de probabilidad de encontrar una partícula en diferentes posiciones del eje x.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
